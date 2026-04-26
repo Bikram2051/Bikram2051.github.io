@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ============================================================
+     SEO + SOCIAL
+     ============================================================ -->
+<title>Bikram Bhattarai — Data Analyst Portfolio</title>
+<meta name="description" content="Portfolio of Bikram Bhattarai — Data Analyst specialising in BI dashboards, SQL pipelines, and turning messy data into business decisions." />
+<meta property="og:title" content="Bikram Bhattarai — Data Analyst" />
+<meta property="og:description" content="Data Analyst portfolio: dashboards, SQL, Python, business impact." />
+<meta property="og:url" content="https://bikram2051.github.io" />
+<meta property="og:type" content="website" />
+
+<!-- Fonts: Fraunces (display, has optical sizing) + Inter Tight (UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg:        #FBFAF7;   /* warm off-white, less clinical than pure white */
+  --surface:   #FFFFFF;
+  --ink:       #0F172A;   /* deep navy for headings */
+  --ink-soft:  #334155;
+  --muted:     #64748B;
+  --line:      #E5E1D8;   /* warm rule lines */
+  --accent:    #2563EB;   /* electric blue */
+  --accent-soft:#EEF2FF;
+  --highlight: #F4D35E;   /* sparingly used, for stat numbers */
+
+  --max:       1120px;
+  --gutter:    clamp(20px, 4vw, 40px);
+
+  --radius:    14px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md: 0 8px 24px rgba(15,23,42,0.06);
+  --shadow-lg: 0 20px 50px rgba(15,23,42,0.08);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ============================================================
+   2. RESET + BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a  { color: var(--accent); text-decoration: none; transition: color .15s ease; }
+a:hover { color: var(--ink); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 .5em;
+  /* Fraunces optical sizing for large headings */
+  font-variation-settings: "opsz" 144;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+h3 { font-size: 1.2rem; font-variation-settings: "opsz" 36; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+section {
+  padding: clamp(64px, 10vw, 110px) 0;
+  border-top: 1px solid var(--line);
+}
+section:first-of-type { border-top: none; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+.eyebrow::before { content: "— "; color: var(--accent); }
+
+/* ============================================================
+   3. NAVIGATION
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(251, 250, 247, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+  z-index: 100;
+  transition: border-color .2s ease;
+}
+.nav.scrolled { border-color: var(--line); }
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+.brand-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-right: 10px;
+  transform: translateY(-2px);
+}
+.nav-links {
+  display: flex;
+  gap: clamp(16px, 3vw, 32px);
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* Hamburger button — hidden on desktop, shown on narrow screens */
+.nav-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  display: block;
+  width: 16px; height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .2s ease, opacity .2s ease, background .2s ease;
+}
+.nav-toggle span { position: relative; }
+.nav-toggle span::before { position: absolute; top: -5px; left: 0; }
+.nav-toggle span::after  { position: absolute; top:  5px; left: 0; }
+.nav-toggle.open span                  { background: transparent; }
+.nav-toggle.open span::before          { transform: translateY(5px) rotate(45deg); }
+.nav-toggle.open span::after           { transform: translateY(-5px) rotate(-45deg); }
+
+/* On narrow screens: hamburger toggle reveals the nav links */
+@media (max-width: 640px) {
+  .nav-inner { gap: 12px; }
+  .brand {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 68px; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(251, 250, 247, 0.98);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .nav-links.open {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    display: block;
+    padding: 12px var(--gutter);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links li:first-child a { border-top: none; }
+}
+
+/* ============================================================
+   4. HERO
+   ============================================================ */
+.hero {
+  padding-top: clamp(48px, 8vw, 96px);
+  padding-bottom: clamp(64px, 10vw, 110px);
+  border-top: none;
+  position: relative;
+  overflow: hidden;
+}
+/* subtle grid texture in the background */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at top right, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at top right, black 0%, transparent 70%);
+  opacity: .35;
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 820px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+.hero h1 .accent {
+  color: var(--accent);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+}
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  margin: 1rem 0 2rem;
+  min-height: 2.6em; /* prevent layout jump during typing */
+}
+.hero-tagline .cursor {
+  display: inline-block;
+  width: 2px; height: 1.05em;
+  background: var(--accent);
+  margin-left: 2px;
+  transform: translateY(3px);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.cta-row {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-top: 1.5rem;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 500; font-size: 0.95rem;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-primary {
+  background: var(--ink); color: var(--bg);
+}
+.btn-primary:hover { background: var(--accent); color: white; transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--ink); border-color: var(--line);
+}
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+/* Hero stats card on the right */
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+.hero-card::after {
+  content: "";
+  position: absolute; top: -1px; right: 32px;
+  width: 60px; height: 3px;
+  background: var(--accent);
+  border-radius: 0 0 3px 3px;
+}
+.hero-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+.stat .num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-variation-settings: "opsz" 72;
+  line-height: 1;
+}
+.stat .num .unit { color: var(--accent); font-style: italic; }
+.stat .lbl {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   5. ABOUT + JOURNEY
+   ============================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .two-col { grid-template-columns: 1fr; gap: 16px; }
+}
+.section-head h2 { margin-top: 0.2em; }
+.lead {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.lead + .lead { margin-top: 1em; }
+
+/* Pull quote for the journey story */
+.pull-quote {
+  margin: 32px 0 0;
+  padding: 24px 28px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+
+/* ============================================================
+   6. SKILLS
+   ============================================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.skill-group {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.skill-group:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.skill-group h3 {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 5px 11px;
+  border-radius: 6px;
+}
+
+/* Animated proficiency bars (used optionally for top skills) */
+.bar-list { margin-top: 28px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 48px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  font-size: 0.93rem;
+}
+.bar-track {
+  height: 6px; background: var(--line); border-radius: 999px; overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #60A5FA);
+  border-radius: 999px;
+  width: 0;
+  transition: width 1.4s cubic-bezier(.2,.8,.2,1);
+}
+.bar-row .pct { color: var(--muted); font-family: var(--font-mono); font-size: 0.82rem; text-align: right; }
+
+/* ============================================================
+   7. PROJECTS
+   ============================================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+.project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #cfd6e4;
+}
+.project-cover {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1E293B 0%, #2563EB 100%);
+  position: relative;
+  overflow: hidden;
+}
+/* Decorative SVG-like pattern on cover (no images required) */
+.project-cover::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.15) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(244,211,94,.25) 0, transparent 40%);
+}
+.project-cover .label {
+  position: absolute; bottom: 14px; left: 16px;
+  font-family: var(--font-mono); font-size: 0.74rem;
+  letter-spacing: 0.1em; color: rgba(255,255,255,.85);
+  text-transform: uppercase;
+}
+.project-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+.project-body h3 {
+  font-size: 1.25rem; margin-bottom: 8px;
+  font-variation-settings: "opsz" 36;
+}
+.project-body p {
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+  flex: 1;
+}
+.impact {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: #FEF7CD;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+.impact::before {
+  content: "↗";
+  color: var(--accent);
+  font-weight: 700;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.project-tags .chip { font-size: 0.74rem; padding: 3px 9px; }
+.project-links { display: flex; gap: 16px; font-size: 0.9rem; font-weight: 500; }
+.project-links a { display: inline-flex; align-items: center; gap: 4px; }
+.project-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Alternate cover gradients per card */
+.project:nth-child(2) .project-cover { background: linear-gradient(135deg, #0F766E, #14B8A6); }
+.project:nth-child(3) .project-cover { background: linear-gradient(135deg, #7C2D12, #F59E0B); }
+.project:nth-child(4) .project-cover { background: linear-gradient(135deg, #581C87, #A855F7); }
+
+/* ============================================================
+   8. EDUCATION + CERTS
+   ============================================================ */
+.timeline {
+  margin-top: 32px;
+  border-left: 2px solid var(--line);
+  padding-left: 28px;
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -35px; top: 8px;
+  width: 12px; height: 12px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+.tl-item h3 { margin-bottom: 4px; }
+.tl-meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.tl-item p { margin: 4px 0 0; font-size: 0.95rem; }
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.cert {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  background: var(--surface);
+  display: flex; align-items: center; gap: 12px;
+  transition: border-color .15s ease;
+}
+.cert:hover { border-color: var(--accent); }
+.cert-mark {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 6px;
+  display: grid; place-items: center;
+  font-weight: 600; font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.cert-name { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
+.cert-issuer { font-size: 0.78rem; color: var(--muted); }
+
+/* ============================================================
+   9. CONTACT + FOOTER
+   ============================================================ */
+.contact-card {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius);
+  padding: clamp(36px, 6vw, 64px);
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-card::after {
+  content: "";
+  position: absolute; right: -80px; bottom: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.contact-card h2 { color: white; margin-bottom: .4em; }
+.contact-card p { color: rgba(255,255,255,.75); font-size: 1.05rem; max-width: 38ch; }
+.contact-list { list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
+.contact-list li { padding: 6px 0; font-size: 0.95rem; }
+.contact-list a { color: white; font-weight: 500; }
+.contact-list a:hover { color: var(--highlight); }
+.contact-list .key {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,.55);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+@media (max-width: 720px) {
+  .contact-card { grid-template-columns: 1fr; gap: 28px; }
+}
+
+footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 36px 0 48px;
+}
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* ============================================================
+   10. SCROLL REVEAL  (progressive enhancement)
+   The .js-reveal class is added by JavaScript on load.
+   If JS fails or is disabled, content remains visible — no broken page.
+   ============================================================ */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.js-reveal .reveal.visible { opacity: 1; transform: none; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0s !important; transition-duration: 0s !important; }
+  html { scroll-behavior: auto; }
+  .js-reveal .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand"><span class="brand-dot"></span>Bikram Bhattarai</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Customer Insights · BI · SQL · Melbourne</span>
+      <h1>Turning data into <span class="accent">decisions</span> that move the bottom line.</h1>
+      <!-- Typing effect target -->
+      <p class="hero-tagline">
+        <span id="typed"></span><span class="cursor"></span>
+      </p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View projects →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- Right-side stats card, replaces a generic photo -->
+    <aside class="hero-card reveal">
+      <div class="hero-card-label">// Snapshot</div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">2.5<span class="unit">yrs</span></div>
+          <div class="lbl">Customer insights experience for an apparel brand</div>
+        </div>
+        <div class="stat">
+          <div class="num">2<span class="unit"></span></div>
+          <div class="lbl">Master's degrees — MBA &amp; Master of Data Science (in progress)</div>
+        </div>
+        <div class="stat">
+          <div class="num">6<span class="unit">+</span></div>
+          <div class="lbl">Tools across the stack — SQL, Python, Power BI, Tableau, GA, Excel</div>
+        </div>
+        <div class="stat">
+          <div class="num">100<span class="unit">%</span></div>
+          <div class="lbl">Open to data analyst roles in Melbourne</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT  +  MY JOURNEY (career change story)
+     ============================================================ -->
+<section id="about">
+  <div class="container two-col">
+    <div class="section-head">
+      <span class="eyebrow">01 · About</span>
+      <h2>About me</h2>
+    </div>
+    <div>
+      <p class="lead reveal">
+        I'm a data analyst with an MBA in Marketing &amp; Business Analytics, currently completing a Master of Data Science at Swinburne University in Melbourne. My background sits at the intersection of business strategy and data — I spent close to three years as a Customer Insights Analyst working on segmentation for an apparel brand, and I'm now sharpening the technical side of the craft.
+      </p>
+      <p class="lead reveal">
+        I work primarily in <strong>SQL, Python, Power BI, and Tableau</strong>, with experience in Google Analytics and Excel for marketing-side analysis. I care about clean assumptions, reproducible work, and writing the README.
+      </p>
+
+      <!-- "My Journey" — career-change narrative -->
+      <h3 style="margin-top: 2.4rem;">My journey into data</h3>
+      <p class="reveal">
+        My route into data analytics ran through marketing. During my MBA at Bangalore University I specialised in Marketing &amp; Business Analytics, then joined Keygap Software Solutions in Bangalore as a Customer Insights Analyst. For two and a half years I worked on customer segmentation for an apparel brand client — figuring out who the customers were, what they bought, and how the marketing team should talk to them.
+      </p>
+      <p class="reveal">
+        That work made one thing obvious: I enjoyed the data side more than the campaign side. The questions that mattered — <em>which segment is actually growing? which signup cohort retains? what does this dashboard not tell us?</em> — were data questions. So I moved to Melbourne and started a Master of Data Science at Swinburne to build the technical foundation I'd been working around. The career change isn't really a pivot — it's the part of my last job finally getting its own title.
+      </p>
+      <blockquote class="pull-quote reveal">
+        "I don't want to just produce reports. I want the report to change what the team does on Monday."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="container">
+    <span class="eyebrow">02 · Toolkit</span>
+    <h2>Skills &amp; tools</h2>
+    <p class="lead">A working stack, not a wishlist. Everything below has shipped in a real project.</p>
+
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <h3>// Languages &amp; querying</h3>
+        <div class="chip-row">
+          <span class="chip">SQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">DAX</span>
+          <span class="chip">Excel formulas</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>// Visualisation &amp; BI</h3>
+        <div class="chip-row">
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Tableau Public</span>
+          <span class="chip">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>// Analytics &amp; web</h3>
+        <div class="chip-row">
+          <span class="chip">Google Analytics</span>
+          <span class="chip">Customer segmentation</span>
+          <span class="chip">A/B testing</span>
+          <span class="chip">Cohort analysis</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>// Working style</h3>
+        <div class="chip-row">
+          <span class="chip">Stakeholder interviews</span>
+          <span class="chip">Marketing collaboration</span>
+          <span class="chip">Git</span>
+          <span class="chip">Documentation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Note: removed self-rated proficiency bars (e.g. "SQL 92%") deliberately.
+         Recruiters see them as a junior-level red flag — what does "92%" mean?
+         Concrete projects are far more persuasive than self-assigned percentages. -->
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS  — each one MUST lead with a quantified result
+     ============================================================ -->
+<section id="projects">
+  <div class="container">
+    <span class="eyebrow">03 · Selected work</span>
+    <h2>Featured projects</h2>
+    <p class="lead">Four projects, each with a measurable outcome. Code and dashboards linked.</p>
+
+    <div class="projects-grid">
+
+      <!-- ============================================================
+           PROJECT TEMPLATE — duplicate this block for each project.
+           Rules:
+             • Title = a business outcome, not a tool
+             • Impact pill = ONE measurable result. If you don't have a
+               real number, describe the outcome qualitatively. NEVER
+               invent a percentage — recruiters check, and it ends interviews.
+             • Body = 2–3 sentences on what you did and what it revealed
+             • Tags = the actual tools used
+             • Links = case study (write-up), GitHub repo, or live dashboard
+           ============================================================ -->
+
+      <!-- PROJECT 1 — likely your strongest piece given your background -->
+      <article class="project reveal">
+        <div class="project-cover"><span class="label">Power BI · Customer segmentation</span></div>
+        <div class="project-body">
+          <h3>Apparel customer segmentation</h3>
+          <span class="impact">Identified high-value cohorts the marketing team built campaigns around</span>
+          <p>From my time at Keygap: segmented an apparel brand's customer base using SQL pulls and Power BI. Combined transactional history with Google Analytics behaviour to define segments by purchase frequency, basket size, and category preference. Findings fed directly into the marketing team's campaign calendar.</p>
+          <div class="project-tags">
+            <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Google Analytics</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Case study →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 — link your existing Tableau Public work here -->
+      <article class="project reveal">
+        <div class="project-cover"><span class="label">Tableau · Public viz</span></div>
+        <div class="project-body">
+          <h3>[Tableau dashboard title]</h3>
+          <span class="impact">[One-line takeaway from the analysis]</span>
+          <p>[Two sentences: what dataset, what question you were answering, what the dashboard revealed. Replace this with one of the dashboards from your Tableau Public profile.]</p>
+          <div class="project-tags">
+            <span class="chip">Tableau</span><span class="chip">EDA</span>
+          </div>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/vizzes" target="_blank" rel="noopener">View on Tableau Public →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 — Python/SQL analysis project -->
+      <article class="project reveal">
+        <div class="project-cover"><span class="label">Python · SQL · EDA</span></div>
+        <div class="project-body">
+          <h3>[Project title — start with the business question]</h3>
+          <span class="impact">[Concrete finding or outcome]</span>
+          <p>[2–3 sentences on the dataset, the framing, and what you found. Examples to draw from: a Swinburne coursework project, a Kaggle dataset you analysed end-to-end, an A/B test simulation, a churn analysis.]</p>
+          <div class="project-tags">
+            <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">pandas</span>
+          </div>
+          <div class="project-links">
+            <a href="#">GitHub →</a>
+            <a href="#">Write-up →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 — second Tableau or Power BI dashboard -->
+      <article class="project reveal">
+        <div class="project-cover"><span class="label">Power BI · Reporting</span></div>
+        <div class="project-body">
+          <h3>[Dashboard or report title]</h3>
+          <span class="impact">[What decision the dashboard made easier]</span>
+          <p>[2–3 sentences. If you have a second dashboard from Keygap that you can describe at a high level without revealing client data, this is a great spot for it. Otherwise use a coursework or self-initiated project.]</p>
+          <div class="project-tags">
+            <span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">SQL</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Case study →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION + CERTIFICATIONS
+     ============================================================ -->
+<section id="education">
+  <div class="container">
+    <span class="eyebrow">04 · Background</span>
+    <h2>Experience &amp; education</h2>
+
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-meta">2025 — present  ·  Melbourne</div>
+        <h3>Master of Data Science · Swinburne University of Technology</h3>
+        <p>Building the technical foundation behind the analytics work — statistics, machine learning, programming, and data engineering. Coursework in Python, SQL, and applied ML.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta">Jan 2021 — Aug 2023  ·  Bangalore</div>
+        <h3>Customer Insights Analyst · Keygap Software Solutions Pvt Ltd</h3>
+        <p>Customer segmentation work for an apparel brand client. Pulled and cleaned customer data with SQL and Excel, built dashboards in Power BI and Tableau, ran Python analyses on purchase behaviour, and used Google Analytics to tie online activity back to segments. Translated the findings into recommendations the marketing team used to plan campaigns.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta">2018 — 2020  ·  Bangalore</div>
+        <h3>Master of Business Administration · Bangalore University</h3>
+        <p>Specialisation in Marketing &amp; Business Analytics. The analytics half of the degree is what set the direction for everything since.</p>
+      </div>
+
+    </div>
+
+    <div class="cert-grid">
+      <!--
+        Cert placeholders. Replace with the certifications you've actually completed.
+        If you haven't done any yet, delete this whole .cert-grid block — better to
+        omit the section than fill it with weak entries.
+      -->
+      <div class="cert">
+        <div class="cert-mark">G</div>
+        <div>
+          <div class="cert-name">Google Data Analytics</div>
+          <div class="cert-issuer">Coursera · [year]</div>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-mark">T</div>
+        <div>
+          <div class="cert-name">Tableau Desktop Specialist</div>
+          <div class="cert-issuer">Salesforce · [year]</div>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-mark">PL</div>
+        <div>
+          <div class="cert-name">Microsoft PL-300 · Power BI</div>
+          <div class="cert-issuer">Microsoft · [year]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <span class="eyebrow">05 · Contact</span>
+    <h2>Let's talk data.</h2>
+
+    <div class="contact-card reveal">
+      <div>
+        <h2>Open to data analyst roles in Melbourne.</h2>
+        <p>Currently studying full-time at Swinburne and available for graduate, internship, and part-time analyst roles. Reply within 24 hours — email is fastest.</p>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="key">Email</span>
+          <a href="mailto:vikrambhattarai1994@gmail.com">vikrambhattarai1994@gmail.com</a>
+        </li>
+        <li>
+          <span class="key">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/bikram2051/" target="_blank" rel="noopener">linkedin.com/in/bikram2051</a>
+        </li>
+        <li>
+          <span class="key">GitHub</span>
+          <a href="https://github.com/Bikram2051" target="_blank" rel="noopener">@Bikram2051</a>
+        </li>
+        <li>
+          <span class="key">Tableau Public</span>
+          <a href="https://public.tableau.com/app/profile/bikram.bhattarai/vizzes" target="_blank" rel="noopener">public.tableau.com/…/bikram.bhattarai</a>
+        </li>
+        <li>
+          <span class="key">Based in</span>
+          <span style="color: white;">Clayton, Melbourne · open to onsite &amp; remote</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year"></span> Bikram Bhattarai. Built from scratch with HTML/CSS/JS.</span>
+    <span>Hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+/* ----- Mobile nav toggle ----- */
+const toggle = document.getElementById('navToggle');
+const links  = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const isOpen = links.classList.toggle('open');
+  toggle.classList.toggle('open', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});
+// Close menu when a link is tapped (on mobile, after navigating)
+links.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ----- Footer year ----- */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ----- Nav border on scroll ----- */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+/* ----- Hero typing effect -----
+   Edit the array below with your own taglines.
+   Honors prefers-reduced-motion automatically.
+*/
+const phrases = [
+  "Customer Insights Analyst → Master of Data Science.",
+  "SQL · Python · Power BI · Tableau · GA.",
+  "Turning customer behaviour into business decisions."
+];
+const typedEl = document.getElementById('typed');
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (reduced) {
+  typedEl.textContent = phrases[0];
+} else {
+  let pIdx = 0, cIdx = 0, deleting = false;
+  const tick = () => {
+    const current = phrases[pIdx];
+    if (!deleting) {
+      typedEl.textContent = current.slice(0, ++cIdx);
+      if (cIdx === current.length) { deleting = true; setTimeout(tick, 1800); return; }
+    } else {
+      typedEl.textContent = current.slice(0, --cIdx);
+      if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; }
+    }
+    setTimeout(tick, deleting ? 30 : 55);
+  };
+  tick();
+}
+
+/* ----- Scroll reveal + animated skill bars ----- */
+// Add js-reveal class so the CSS opacity:0 only kicks in when JS is running.
+// Without this, users with JS disabled would see a blank page.
+document.documentElement.classList.add('js-reveal');
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+
+      // If the revealed block contains skill bars, fill them
+      if (entry.target.matches('[data-bars]')) {
+        entry.target.querySelectorAll('.bar-fill').forEach(b => {
+          b.style.width = b.dataset.pct + '%';
+        });
+      }
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  // Older browsers: just show everything immediately
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.bar-fill').forEach(b => {
+    b.style.width = b.dataset.pct + '%';
+  });
+}
+</script>
+
+</body>
+</html>
