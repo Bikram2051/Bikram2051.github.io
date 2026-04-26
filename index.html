@@ -513,6 +513,7 @@ section:first-of-type { border-top: none; }
 .project:nth-child(2) .project-cover { background: linear-gradient(135deg, #0F766E, #14B8A6); }
 .project:nth-child(3) .project-cover { background: linear-gradient(135deg, #7C2D12, #F59E0B); }
 .project:nth-child(4) .project-cover { background: linear-gradient(135deg, #581C87, #A855F7); }
+.project:nth-child(5) .project-cover { background: linear-gradient(135deg, #831843, #EC4899); }
 
 /* ============================================================
    8. EDUCATION + CERTS
@@ -806,23 +807,20 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
   <div class="container">
     <span class="eyebrow">03 · Selected work</span>
     <h2>Featured projects</h2>
-    <p class="lead">Four projects, each with a measurable outcome. Code and dashboards linked.</p>
+    <p class="lead">Five projects across customer analytics, EV adoption, HR, finance, and sales. Click any dashboard to view it on Tableau Public.</p>
 
     <div class="projects-grid">
 
       <!-- ============================================================
-           PROJECT TEMPLATE — duplicate this block for each project.
-           Rules:
+           Each card structure:
              • Title = a business outcome, not a tool
-             • Impact pill = ONE measurable result. If you don't have a
-               real number, describe the outcome qualitatively. NEVER
-               invent a percentage — recruiters check, and it ends interviews.
-             • Body = 2–3 sentences on what you did and what it revealed
-             • Tags = the actual tools used
-             • Links = case study (write-up), GitHub repo, or live dashboard
+             • Impact pill = the takeaway from the analysis
+             • Body = 2–3 sentences on the dataset, framing, what was revealed
+             • Tags = the tools actually used
+             • Links = case study, GitHub repo, or live dashboard
            ============================================================ -->
 
-      <!-- PROJECT 1 — likely your strongest piece given your background -->
+      <!-- PROJECT 1 — Keygap (real paid work) -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Power BI · Customer segmentation</span></div>
         <div class="project-body">
@@ -832,57 +830,70 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
           <div class="project-tags">
             <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Google Analytics</span>
           </div>
+          <!-- No external link until you write a case study or have a public asset -->
+        </div>
+      </article>
+
+      <!-- PROJECT 2 — Electric Vehicle dashboard -->
+      <article class="project reveal">
+        <div class="project-cover"><span class="label">Tableau · EV adoption</span></div>
+        <div class="project-body">
+          <h3>Interactive Electric Vehicle data analysis</h3>
+          <span class="impact">Visualised EV adoption trends, model mix, and geographic distribution</span>
+          <p>An interactive Tableau dashboard exploring electric vehicle registration data. Tracks adoption over model year, the BEV vs PHEV split, top manufacturers and models, and geographic distribution by state. Built as a self-initiated project to practise dashboard composition and interactive filtering.</p>
+          <div class="project-tags">
+            <span class="chip">Tableau</span><span class="chip">EDA</span><span class="chip">Storytelling</span>
+          </div>
           <div class="project-links">
-            <a href="#">Case study →</a>
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/ElectricVehicleDataAnalysis_17315002218810/Dashboard1" target="_blank" rel="noopener">View dashboard →</a>
           </div>
         </div>
       </article>
 
-      <!-- PROJECT 2 — link your existing Tableau Public work here -->
+      <!-- PROJECT 3 — HR Analytics dashboard -->
       <article class="project reveal">
-        <div class="project-cover"><span class="label">Tableau · Public viz</span></div>
+        <div class="project-cover"><span class="label">Tableau · HR analytics</span></div>
         <div class="project-body">
-          <h3>[Tableau dashboard title]</h3>
-          <span class="impact">[One-line takeaway from the analysis]</span>
-          <p>[Two sentences: what dataset, what question you were answering, what the dashboard revealed. Replace this with one of the dashboards from your Tableau Public profile.]</p>
+          <h3>Interactive HR analytics dashboard</h3>
+          <span class="impact">Surfaced workforce demographics and attrition patterns for HR decision-making</span>
+          <p>A Tableau dashboard analysing employee data — headcount, attrition rate, demographics, and department breakdowns — with interactive filters that let HR drill into specific groups. Designed to answer the questions HR teams typically ask first: who's leaving, where, and why.</p>
           <div class="project-tags">
-            <span class="chip">Tableau</span><span class="chip">EDA</span>
+            <span class="chip">Tableau</span><span class="chip">HR analytics</span><span class="chip">Dashboarding</span>
           </div>
           <div class="project-links">
-            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/vizzes" target="_blank" rel="noopener">View on Tableau Public →</a>
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/INTERACTIVEHRANALYTICSDASHBOARD/HRANALYTICSDASHBOARD" target="_blank" rel="noopener">View dashboard →</a>
           </div>
         </div>
       </article>
 
-      <!-- PROJECT 3 — Python/SQL analysis project -->
+      <!-- PROJECT 4 — Bank Loan dashboard -->
       <article class="project reveal">
-        <div class="project-cover"><span class="label">Python · SQL · EDA</span></div>
+        <div class="project-cover"><span class="label">Tableau · Financial analytics</span></div>
         <div class="project-body">
-          <h3>[Project title — start with the business question]</h3>
-          <span class="impact">[Concrete finding or outcome]</span>
-          <p>[2–3 sentences on the dataset, the framing, and what you found. Examples to draw from: a Swinburne coursework project, a Kaggle dataset you analysed end-to-end, an A/B test simulation, a churn analysis.]</p>
+          <h3>Bank loan portfolio dashboard</h3>
+          <span class="impact">Tracked loan volume, repayment health, and risk concentrations</span>
+          <p>A Tableau dashboard summarising a bank's loan portfolio — funded vs received amounts, good vs bad loan ratios, and breakdowns by purpose, term, and borrower profile. Designed for the kind of monthly review a credit-risk team would actually use.</p>
           <div class="project-tags">
-            <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">pandas</span>
+            <span class="chip">Tableau</span><span class="chip">Financial analytics</span><span class="chip">KPI design</span>
           </div>
           <div class="project-links">
-            <a href="#">GitHub →</a>
-            <a href="#">Write-up →</a>
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/BANKLOANDASHBOARD_17339885232100/Summary" target="_blank" rel="noopener">View dashboard →</a>
           </div>
         </div>
       </article>
 
-      <!-- PROJECT 4 — second Tableau or Power BI dashboard -->
+      <!-- PROJECT 5 — Sales dashboard -->
       <article class="project reveal">
-        <div class="project-cover"><span class="label">Power BI · Reporting</span></div>
+        <div class="project-cover"><span class="label">Tableau · Sales reporting</span></div>
         <div class="project-body">
-          <h3>[Dashboard or report title]</h3>
-          <span class="impact">[What decision the dashboard made easier]</span>
-          <p>[2–3 sentences. If you have a second dashboard from Keygap that you can describe at a high level without revealing client data, this is a great spot for it. Otherwise use a coursework or self-initiated project.]</p>
+          <h3>Dynamic sales dashboard</h3>
+          <span class="impact">Year-over-year sales tracking with category and regional drill-downs</span>
+          <p>A Tableau sales dashboard showing total sales, profit, and quantity trends across years, with breakdowns by category, sub-category, and region. Built to demonstrate the BI fundamentals — clean KPIs at the top, supporting visuals below, interactive filters throughout.</p>
           <div class="project-tags">
-            <span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">SQL</span>
+            <span class="chip">Tableau</span><span class="chip">Sales analytics</span><span class="chip">BI</span>
           </div>
           <div class="project-links">
-            <a href="#">Case study →</a>
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/SalesDashboardOverview_17309887480550/SalesDashboard" target="_blank" rel="noopener">View dashboard →</a>
           </div>
         </div>
       </article>
@@ -921,34 +932,11 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
     </div>
 
-    <div class="cert-grid">
-      <!--
-        Cert placeholders. Replace with the certifications you've actually completed.
-        If you haven't done any yet, delete this whole .cert-grid block — better to
-        omit the section than fill it with weak entries.
-      -->
-      <div class="cert">
-        <div class="cert-mark">G</div>
-        <div>
-          <div class="cert-name">Google Data Analytics</div>
-          <div class="cert-issuer">Coursera · [year]</div>
-        </div>
-      </div>
-      <div class="cert">
-        <div class="cert-mark">T</div>
-        <div>
-          <div class="cert-name">Tableau Desktop Specialist</div>
-          <div class="cert-issuer">Salesforce · [year]</div>
-        </div>
-      </div>
-      <div class="cert">
-        <div class="cert-mark">PL</div>
-        <div>
-          <div class="cert-name">Microsoft PL-300 · Power BI</div>
-          <div class="cert-issuer">Microsoft · [year]</div>
-        </div>
-      </div>
-    </div>
+    <!--
+      Certifications grid removed for now. When you complete a certification
+      (Google Data Analytics, Tableau Desktop Specialist, PL-300, etc.),
+      add it back as a .cert-grid block. See git history for the original markup.
+    -->
   </div>
 </section>
 
