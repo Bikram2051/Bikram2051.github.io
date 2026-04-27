@@ -256,7 +256,7 @@ section:first-of-type { border-top: none; }
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 64px;
   align-items: center;
   position: relative;
@@ -331,6 +331,18 @@ section:first-of-type { border-top: none; }
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 18px;
+}
+.hero-badge-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  max-width: 480px;
+  margin: 0 auto;           /* softens corners, matches overall radius */
+}
+.hero-card:has(.hero-badge-img) {
+  padding: 0;
+  overflow: hidden;             /* keeps the image inside the rounded card */
 }
 .stat-row {
   display: grid;
@@ -736,26 +748,8 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
     <!-- Right-side stats card, replaces a generic photo -->
     <aside class="hero-card reveal">
-      <div class="hero-card-label">// Snapshot</div>
-      <div class="stat-row">
-        <div class="stat">
-          <div class="num">2.5<span class="unit">yrs</span></div>
-          <div class="lbl">Customer insights experience for an apparel brand</div>
-        </div>
-        <div class="stat">
-          <div class="num">2<span class="unit"></span></div>
-          <div class="lbl">Master's degrees - MBA &amp; Master of Data Science (in progress)</div>
-        </div>
-        <div class="stat">
-          <div class="num">6<span class="unit">+</span></div>
-          <div class="lbl">Tools across the stack - SQL, Python, Power BI, Tableau, GA, Excel</div>
-        </div>
-        <div class="stat">
-          <div class="num">100<span class="unit">%</span></div>
-          <div class="lbl">Open to data analyst roles in Melbourne</div>
-        </div>
-      </div>
-    </aside>
+  <img src="assets/hero.png" alt="Bikram Bhattarai – Aspiring Data Scientist badge" class="hero-badge-img" />
+</aside>
   </div>
 </section>
 
