@@ -6,10 +6,10 @@
 <!-- ============================================================
      SEO + SOCIAL
      ============================================================ -->
-<title>Bikram Bhattarai — Data Analyst Portfolio</title>
-<meta name="description" content="Portfolio of Bikram Bhattarai — Data Analyst specialising in BI dashboards, SQL pipelines, and turning messy data into business decisions." />
-<meta property="og:title" content="Bikram Bhattarai — Data Analyst" />
-<meta property="og:description" content="Data Analyst portfolio: dashboards, SQL, Python, business impact." />
+<title>Bikram Bhattarai - Data Analyst Portfolio</title>
+<meta name="description" content="Bikram Bhattarai — Data Analyst in Melbourne. MBA + Master of Data Science (Swinburne). SQL, Python, Power BI, Tableau, machine learning." />
+<meta property="og:title" content="Bikram Bhattarai - Data Analyst" />
+<meta property="og:description" content="Data Analyst in Melbourne. MBA + Master of Data Science. SQL, Python, Power BI, Tableau." />
 <meta property="og:url" content="https://bikram2051.github.io" />
 <meta property="og:type" content="website" />
 
@@ -101,7 +101,7 @@ section:first-of-type { border-top: none; }
   margin-bottom: 1.2rem;
   display: inline-block;
 }
-.eyebrow::before { content: "— "; color: var(--accent); }
+.eyebrow::before { content: "- "; color: var(--accent); }
 
 /* ============================================================
    3. NAVIGATION
@@ -138,6 +138,17 @@ section:first-of-type { border-top: none; }
   margin-right: 10px;
   transform: translateY(-2px);
 }
+.brand-photo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-top: -3px;
+  border: 1px solid var(--line);
+}
 .nav-links {
   display: flex;
   gap: clamp(16px, 3vw, 32px);
@@ -152,7 +163,7 @@ section:first-of-type { border-top: none; }
 }
 .nav-links a:hover { color: var(--accent); }
 
-/* Hamburger button — hidden on desktop, shown on narrow screens */
+/* Hamburger button - hidden on desktop, shown on narrow screens */
 .nav-toggle {
   display: none;
   width: 40px; height: 40px;
@@ -361,6 +372,40 @@ section:first-of-type { border-top: none; }
   max-width: 62ch;
 }
 .lead + .lead { margin-top: 1em; }
+/* Profile photo in the About section */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.profile-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--surface);
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+.profile-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.profile-meta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
 
 /* Pull quote for the journey story */
 .pull-quote {
@@ -628,7 +673,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 /* ============================================================
    10. SCROLL REVEAL  (progressive enhancement)
    The .js-reveal class is added by JavaScript on load.
-   If JS fails or is disabled, content remains visible — no broken page.
+   If JS fails or is disabled, content remains visible - no broken page.
    ============================================================ */
 .js-reveal .reveal {
   opacity: 0;
@@ -653,7 +698,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
      ============================================================ -->
 <header class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#top" class="brand"><span class="brand-dot"></span>Bikram Bhattarai</a>
+<a href="#top" class="brand"><img src="assets/bikram.jpg" alt="" class="brand-photo" />Bikram Bhattarai</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span>
     </button>
@@ -677,7 +722,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow">Customer Insights · BI · SQL · Melbourne</span>
+      <span class="eyebrow">Data Analyst · ML in progress · Melbourne</span>
       <h1>Turning data into <span class="accent">decisions</span> that move the bottom line.</h1>
       <!-- Typing effect target -->
       <p class="hero-tagline">
@@ -699,11 +744,11 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
         <div class="stat">
           <div class="num">2<span class="unit"></span></div>
-          <div class="lbl">Master's degrees — MBA &amp; Master of Data Science (in progress)</div>
+          <div class="lbl">Master's degrees - MBA &amp; Master of Data Science (in progress)</div>
         </div>
         <div class="stat">
           <div class="num">6<span class="unit">+</span></div>
-          <div class="lbl">Tools across the stack — SQL, Python, Power BI, Tableau, GA, Excel</div>
+          <div class="lbl">Tools across the stack - SQL, Python, Power BI, Tableau, GA, Excel</div>
         </div>
         <div class="stat">
           <div class="num">100<span class="unit">%</span></div>
@@ -724,20 +769,29 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
       <h2>About me</h2>
     </div>
     <div>
+      
+      <!-- Profile photo + name strip - sits above the About paragraph -->
+<div class="profile-row reveal">
+  <img src="assets/bikram.jpg" alt="Bikram Bhattarai" class="profile-photo" />
+  <div class="profile-meta">
+    <strong>Bikram Bhattarai</strong>
+    Customer Insights · Melbourne
+  </div>
+</div>
       <p class="lead reveal">
-        I'm a data analyst with an MBA in Marketing &amp; Business Analytics, currently completing a Master of Data Science at Swinburne University in Melbourne. My background sits at the intersection of business strategy and data — I spent close to three years as a Customer Insights Analyst working on segmentation for an apparel brand, and I'm now sharpening the technical side of the craft.
+        I'm a data analyst with an MBA in Marketing &amp; Business Analytics, currently completing a Master of Data Science at Swinburne University in Melbourne. My background sits at the intersection of business strategy and data - I spent close to three years as a Customer Insights Analyst working on segmentation for an apparel brand, and I'm now sharpening the technical side of the craft.
       </p>
       <p class="lead reveal">
         I work primarily in <strong>SQL, Python, Power BI, and Tableau</strong>, with experience in Google Analytics and Excel for marketing-side analysis. I care about clean assumptions, reproducible work, and writing the README.
       </p>
 
-      <!-- "My Journey" — career-change narrative -->
+      <!-- "My Journey" - career-change narrative -->
       <h3 style="margin-top: 2.4rem;">My journey into data</h3>
       <p class="reveal">
-        My route into data analytics ran through marketing. During my MBA at Bangalore University I specialised in Marketing &amp; Business Analytics, then joined Keygap Software Solutions in Bangalore as a Customer Insights Analyst. For two and a half years I worked on customer segmentation for an apparel brand client — figuring out who the customers were, what they bought, and how the marketing team should talk to them.
+        My route into data analytics ran through marketing. During my MBA at Bangalore University I specialised in Marketing &amp; Business Analytics, then joined Keygap Software Solutions in Bangalore as a Customer Insights Analyst. For two and a half years I worked on customer segmentation for an apparel brand client - figuring out who the customers were, what they bought, and how the marketing team should talk to them.
       </p>
       <p class="reveal">
-        That work made one thing obvious: I enjoyed the data side more than the campaign side. The questions that mattered — <em>which segment is actually growing? which signup cohort retains? what does this dashboard not tell us?</em> — were data questions. So I moved to Melbourne and started a Master of Data Science at Swinburne to build the technical foundation I'd been working around. The career change isn't really a pivot — it's the part of my last job finally getting its own title.
+        That work made one thing obvious: I enjoyed the data side more than the campaign side. The questions that mattered - <em>which segment is actually growing? which signup cohort retains? what does this dashboard not tell us?</em> - were data questions. So I moved to Melbourne and started a Master of Data Science at Swinburne to build the technical foundation I'd been working around. The career change isn't really a pivot - it's the part of my last job finally getting its own title.
       </p>
       <blockquote class="pull-quote reveal">
         "I don't want to just produce reports. I want the report to change what the team does on Monday."
@@ -793,15 +847,26 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
       </div>
     </div>
+    <div class="skill-group reveal" style="border-color: var(--accent-soft); background: linear-gradient(135deg, var(--surface), var(--accent-soft));">
+        <h3 style="color: var(--accent);">// Currently learning · Swinburne</h3>
+        <div class="chip-row">
+          <span class="chip">Machine learning</span>
+          <span class="chip">Deep learning</span>
+          <span class="chip">Statistics &amp; probability</span>
+          <span class="chip">Big data (Hadoop / Spark)</span>
+          <span class="chip">Python for DS (NumPy / pandas / scikit-learn)</span>
+          <span class="chip">SQL for data science</span>
+        </div>
+      </div>
 
     <!-- Note: removed self-rated proficiency bars (e.g. "SQL 92%") deliberately.
-         Recruiters see them as a junior-level red flag — what does "92%" mean?
+         Recruiters see them as a junior-level red flag - what does "92%" mean?
          Concrete projects are far more persuasive than self-assigned percentages. -->
   </div>
 </section>
 
 <!-- ============================================================
-     PROJECTS  — each one MUST lead with a quantified result
+     PROJECTS  - each one MUST lead with a quantified result
      ============================================================ -->
 <section id="projects">
   <div class="container">
@@ -820,7 +885,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
              • Links = case study, GitHub repo, or live dashboard
            ============================================================ -->
 
-      <!-- PROJECT 1 — Keygap (real paid work) -->
+      <!-- PROJECT 1 - Keygap (real paid work) -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Power BI · Customer segmentation</span></div>
         <div class="project-body">
@@ -834,7 +899,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
       </article>
 
-      <!-- PROJECT 2 — Electric Vehicle dashboard -->
+      <!-- PROJECT 2 - Electric Vehicle dashboard -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Tableau · EV adoption</span></div>
         <div class="project-body">
@@ -850,13 +915,13 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
       </article>
 
-      <!-- PROJECT 3 — HR Analytics dashboard -->
+      <!-- PROJECT 3 - HR Analytics dashboard -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Tableau · HR analytics</span></div>
         <div class="project-body">
           <h3>Interactive HR analytics dashboard</h3>
           <span class="impact">Surfaced workforce demographics and attrition patterns for HR decision-making</span>
-          <p>A Tableau dashboard analysing employee data — headcount, attrition rate, demographics, and department breakdowns — with interactive filters that let HR drill into specific groups. Designed to answer the questions HR teams typically ask first: who's leaving, where, and why.</p>
+          <p>A Tableau dashboard analysing employee data - headcount, attrition rate, demographics, and department breakdowns - with interactive filters that let HR drill into specific groups. Designed to answer the questions HR teams typically ask first: who's leaving, where, and why.</p>
           <div class="project-tags">
             <span class="chip">Tableau</span><span class="chip">HR analytics</span><span class="chip">Dashboarding</span>
           </div>
@@ -866,13 +931,13 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
       </article>
 
-      <!-- PROJECT 4 — Bank Loan dashboard -->
+      <!-- PROJECT 4 - Bank Loan dashboard -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Tableau · Financial analytics</span></div>
         <div class="project-body">
           <h3>Bank loan portfolio dashboard</h3>
           <span class="impact">Tracked loan volume, repayment health, and risk concentrations</span>
-          <p>A Tableau dashboard summarising a bank's loan portfolio — funded vs received amounts, good vs bad loan ratios, and breakdowns by purpose, term, and borrower profile. Designed for the kind of monthly review a credit-risk team would actually use.</p>
+          <p>A Tableau dashboard summarising a bank's loan portfolio - funded vs received amounts, good vs bad loan ratios, and breakdowns by purpose, term, and borrower profile. Designed for the kind of monthly review a credit-risk team would actually use.</p>
           <div class="project-tags">
             <span class="chip">Tableau</span><span class="chip">Financial analytics</span><span class="chip">KPI design</span>
           </div>
@@ -882,13 +947,13 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
         </div>
       </article>
 
-      <!-- PROJECT 5 — Sales dashboard -->
+      <!-- PROJECT 5 - Sales dashboard -->
       <article class="project reveal">
         <div class="project-cover"><span class="label">Tableau · Sales reporting</span></div>
         <div class="project-body">
           <h3>Dynamic sales dashboard</h3>
           <span class="impact">Year-over-year sales tracking with category and regional drill-downs</span>
-          <p>A Tableau sales dashboard showing total sales, profit, and quantity trends across years, with breakdowns by category, sub-category, and region. Built to demonstrate the BI fundamentals — clean KPIs at the top, supporting visuals below, interactive filters throughout.</p>
+          <p>A Tableau sales dashboard showing total sales, profit, and quantity trends across years, with breakdowns by category, sub-category, and region. Built to demonstrate the BI fundamentals - clean KPIs at the top, supporting visuals below, interactive filters throughout.</p>
           <div class="project-tags">
             <span class="chip">Tableau</span><span class="chip">Sales analytics</span><span class="chip">BI</span>
           </div>
@@ -913,19 +978,19 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
     <div class="timeline reveal">
 
       <div class="tl-item">
-        <div class="tl-meta">2025 — present  ·  Melbourne</div>
+        <div class="tl-meta">2025 - present  ·  Melbourne</div>
         <h3>Master of Data Science · Swinburne University of Technology</h3>
-        <p>Building the technical foundation behind the analytics work — statistics, machine learning, programming, and data engineering. Coursework in Python, SQL, and applied ML.</p>
+        <p>Building the technical foundation behind the analytics work - statistics, machine learning, programming, and data engineering. Coursework in Python, SQL, and applied ML.</p>
       </div>
 
       <div class="tl-item">
-        <div class="tl-meta">Jan 2021 — Aug 2023  ·  Bangalore</div>
+        <div class="tl-meta">Jan 2021 - Aug 2023  ·  Bangalore</div>
         <h3>Customer Insights Analyst · Keygap Software Solutions Pvt Ltd</h3>
         <p>Customer segmentation work for an apparel brand client. Pulled and cleaned customer data with SQL and Excel, built dashboards in Power BI and Tableau, ran Python analyses on purchase behaviour, and used Google Analytics to tie online activity back to segments. Translated the findings into recommendations the marketing team used to plan campaigns.</p>
       </div>
 
       <div class="tl-item">
-        <div class="tl-meta">2018 — 2020  ·  Bangalore</div>
+        <div class="tl-meta">2018 - 2020  ·  Bangalore</div>
         <h3>Master of Business Administration · Bangalore University</h3>
         <p>Specialisation in Marketing &amp; Business Analytics. The analytics half of the degree is what set the direction for everything since.</p>
       </div>
@@ -951,7 +1016,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
     <div class="contact-card reveal">
       <div>
         <h2>Open to data analyst roles in Melbourne.</h2>
-        <p>Currently studying full-time at Swinburne and available for graduate, internship, and part-time analyst roles. Reply within 24 hours — email is fastest.</p>
+        <p>Currently studying full-time at Swinburne and available for graduate, internship, and part-time analyst roles. Reply within 24 hours - email is fastest.</p>
       </div>
       <ul class="contact-list">
         <li>
