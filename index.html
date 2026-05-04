@@ -572,17 +572,35 @@ section:first-of-type { border-top: none; }
 .project:nth-child(4) .project-cover { background: linear-gradient(135deg, #581C87, #A855F7); }
 .project:nth-child(5) .project-cover { background: linear-gradient(135deg, #831843, #EC4899); }
 
-/* Screenshot variant: when a cover has the .has-image class, the inline
-   background-image (set via style="") replaces the gradient. We add a dark
-   overlay so the white label remains legible on top of the screenshot,
-   and disable the decorative radial dots that look messy over a real image. */
+/* Project covers with screenshots
+   - Default (.has-image): image fills the cover, cropped from centre.
+   - .fit-contain: shows the full image without cropping (letterboxed).
+   - .fit-top / .fit-bottom / .fit-left / .fit-right: crop, but anchor accordingly.
+   - On hover: subtle zoom on cropped variants for a more card-like feel. */
 .project-cover.has-image {
+  background-color: #0F172A;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: background-size .35s ease;
+}
+.project-cover.has-image.fit-contain {
+  background-size: contain;
+  background-color: #0F172A;
+}
+.project-cover.has-image.fit-top    { background-position: center top; }
+.project-cover.has-image.fit-bottom { background-position: center bottom; }
+.project-cover.has-image.fit-left   { background-position: left center; }
+.project-cover.has-image.fit-right  { background-position: right center; }
+.project:hover .project-cover.has-image:not(.fit-contain) {
+  background-size: 105%;
 }
 .project-cover.has-image::before {
-  background-image: linear-gradient(180deg, rgba(15,23,42,0) 50%, rgba(15,23,42,0.55) 100%);
+  background-image: linear-gradient(180deg, rgba(15,23,42,0) 50%, rgba(15,23,42,0.65) 100%);
+}
+.project-cover.has-image.fit-contain::before {
+  background-image:
+    linear-gradient(180deg, rgba(15,23,42,0.15) 0%, rgba(15,23,42,0) 30%, rgba(15,23,42,0) 70%, rgba(15,23,42,0.45) 100%);
 }
 
 /* ============================================================
@@ -903,7 +921,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
       <!-- PROJECT 1 - Domain-Adaptive Sentiment Analysis (group, ongoing) -->
       <article class="project reveal">
-        <div class="project-cover has-image" style="background-image: url('assets/projects/sentiment-analysis.png');"><span class="label">Python · Transformers · NLP</span></div>
+        <div class="project-cover has-image fit-contain" style="background-image: url('assets/projects/sentiment-analysis.png');"><span class="label">Python · Transformers · NLP</span></div>
         <div class="project-body">
           <h3>Domain-adaptive sentiment analysis using Transformers</h3>
           <span class="impact">Cross-domain NLP system combining Reddit emotion data with financial sentiment</span>
@@ -916,7 +934,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
       <!-- PROJECT 2 - Electric Vehicle dashboard -->
       <article class="project reveal">
-        <div class="project-cover has-image" style="background-image: url('assets/projects/ev-population.png');"><span class="label">Python · Tableau · EV adoption</span></div>
+        <div class="project-cover has-image fit-contain" style="background-image: url('assets/projects/ev-population.png');"><span class="label">Python · Tableau · EV adoption</span></div>
         <div class="project-body">
           <h3>Electric vehicle population analysis</h3>
           <span class="impact">Profiled EV uptake across Washington State by model year, make, county, and electric range</span>
@@ -932,7 +950,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
       <!-- PROJECT 3 - HR Analytics dashboard -->
       <article class="project reveal">
-        <div class="project-cover has-image" style="background-image: url('assets/projects/hr-analytics.png');"><span class="label">Tableau · HR analytics</span></div>
+        <div class="project-cover has-image fit-contain" style="background-image: url('assets/projects/hr-analytics.png');"><span class="label">Tableau · HR analytics</span></div>
         <div class="project-body">
           <h3>Interactive HR analytics dashboard</h3>
           <span class="impact">Surfaced workforce demographics and attrition patterns for HR decision-making</span>
@@ -948,7 +966,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
       <!-- PROJECT 4 - Bank Loan dashboard -->
       <article class="project reveal">
-        <div class="project-cover has-image" style="background-image: url('assets/projects/bank-loan.png');"><span class="label">SQL · Tableau · Financial analytics</span></div>
+        <div class="project-cover has-image fit-contain" style="background-image: url('assets/projects/bank-loan.png');"><span class="label">SQL · Tableau · Financial analytics</span></div>
         <div class="project-body">
           <h3>Bank loan portfolio dashboard</h3>
           <span class="impact">Tracked loan volume, repayment health, and risk concentrations across the portfolio</span>
@@ -977,7 +995,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
       <!-- PROJECT 6 - Sales dashboard -->
       <article class="project reveal">
-        <div class="project-cover has-image" style="background-image: url('assets/projects/sales-dashboard.png');"><span class="label">Tableau · Sales reporting</span></div>
+        <div class="project-cover has-image fit-contain" style="background-image: url('assets/projects/sales-dashboard.png');"><span class="label">Tableau · Sales reporting</span></div>
         <div class="project-body">
           <h3>Dynamic sales dashboard</h3>
           <span class="impact">Year-over-year sales tracking with category and regional drill-downs</span>
