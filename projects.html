@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects · Bikram Bhattarai, Data Analyst</title>
+<meta name="description" content="Data analytics and machine learning projects by Bikram Bhattarai: domain-adaptive sentiment analysis, Australian beach open data, EV adoption, bank loan and HR dashboards, bankruptcy prediction, and sales BI." />
+<link rel="canonical" href="https://bikram2051.github.io/projects.html" />
+<meta property="og:title" content="Projects · Bikram Bhattarai" />
+<meta property="og:description" content="Applied machine learning, Australian open data, and BI dashboards." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><img src="assets/bikram.jpg" alt="" class="brand-photo" />Bikram Bhattarai</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span></button>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="assets/Bikram-Bhattarai-CV.pdf" class="btn btn-primary nav-cta nav-cta-mobile" download>Download CV</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">Selected work</span>
+    <h1>Projects</h1>
+    <p class="lead">Applied machine learning, Australian open data, and business intelligence dashboarding, across NLP, financial risk, EV adoption, lending, HR, and sales. Each card links to the repository or live dashboard.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="projects-grid">
+
+      <!-- 1. Sentiment analysis (Technology Design Project) -->
+      <article class="project reveal">
+        <div class="project-cover fit-contain" style="background-image: url('assets/projects/sentiment-analysis.png');">
+          <span class="status done">Completed</span><span class="label">Python · Transformers · NLP</span>
+        </div>
+        <div class="project-body">
+          <h3>Domain-adaptive sentiment analysis</h3>
+          <span class="impact">Data Engineer on a team NLP pipeline spanning social and financial text</span>
+          <p>A team Technology Design Project building a domain-adaptive sentiment system across social and financial language. As the Data Engineer I owned the centralised data architecture: ingesting GoEmotions (Reddit emotion data) and the Financial PhraseBank, then handling all text cleaning, standardisation, and the train, validation and test splitting that fed the BERT and FinBERT modelling and a Streamlit metrics dashboard.</p>
+          <div class="project-tags">
+            <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">HuggingFace</span><span class="chip">BERT, FinBERT</span><span class="chip">Data pipeline</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/TDP-2026-Repository/TECHNOLOGY-DESIGN-PROJECT" target="_blank" rel="noopener">View repository</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Australian beach and water locations -->
+      <article class="project reveal">
+        <div class="project-cover" style="background-image: linear-gradient(135deg,#0E7490,#22D3EE);">
+          <span class="status done">Completed</span><span class="label">Python · Jupyter · Australian open data</span>
+        </div>
+        <div class="project-body">
+          <h3>Australian beach and water locations</h3>
+          <span class="impact">Cleaned and combined Australian beach, amenity, and regional climate data</span>
+          <p>An end to end data science project (COS60008) analysing beach and water locations across Australia. Cleaned and combined multiple open datasets covering beach amenities and regional climate, compared New South Wales against the rest of the country, and documented the full workflow in a reproducible Jupyter notebook with a data dictionary.</p>
+          <div class="project-tags">
+            <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Jupyter</span><span class="chip">Open data</span><span class="chip">EDA</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Bikram2051/Bikram2051-COS60008-Assignment" target="_blank" rel="noopener">View repository</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Electric vehicle population -->
+      <article class="project reveal">
+        <div class="project-cover fit-contain" style="background-image: url('assets/projects/ev-population.png');">
+          <span class="label">Python · Tableau · EV adoption</span>
+        </div>
+        <div class="project-body">
+          <h3>Electric vehicle population analysis</h3>
+          <span class="impact">Profiled EV uptake by model year, make, county, and electric range</span>
+          <p>Analysed a Washington State electric vehicle dataset covering battery and plug in hybrid registrations. Cleaned and explored the data in Python (pandas, matplotlib, seaborn), identifying top manufacturers, geographic concentration, and year on year growth, then built an interactive Tableau dashboard for a non technical policy audience covering county distribution, range comparisons, and eligibility.</p>
+          <div class="project-tags">
+            <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Tableau</span><span class="chip">EDA</span>
+          </div>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/ElectricVehicleDataAnalysis_17315002218810/Dashboard1" target="_blank" rel="noopener">View dashboard</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Bank loan portfolio -->
+      <article class="project reveal">
+        <div class="project-cover fit-contain" style="background-image: url('assets/projects/bank-loan.png');">
+          <span class="label">SQL · Tableau · Financial analytics</span>
+        </div>
+        <div class="project-body">
+          <h3>Bank loan portfolio dashboard</h3>
+          <span class="impact">Tracked loan volume, repayment health, and risk concentrations</span>
+          <p>Imported and structured a bank loan dataset in MS SQL Server, writing queries to compute KPIs such as total applications, funded amounts, average interest rates, and month on month trends using DATEPART, CTEs, and window functions. Classified loans into good and bad categories and built three interactive Tableau dashboards (Summary, Overview, Details), all cross validated against the SQL results.</p>
+          <div class="project-tags">
+            <span class="chip">SQL Server</span><span class="chip">Tableau</span><span class="chip">Financial analytics</span><span class="chip">KPI design</span>
+          </div>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/BANKLOANDASHBOARD_17339885232100/Summary" target="_blank" rel="noopener">View dashboard</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Bankruptcy prediction -->
+      <article class="project reveal">
+        <div class="project-cover" style="background-image: url('assets/projects/bankruptcy-prediction.png');">
+          <span class="label">Python · ML · Financial risk</span>
+        </div>
+        <div class="project-body">
+          <h3>Polish companies bankruptcy prediction</h3>
+          <span class="impact">Predicting corporate insolvency from financial ratios under heavy class imbalance</span>
+          <p>A machine learning project using the UCI Polish Companies Bankruptcy dataset of five yearly snapshots and 64 financial ratio features. Built a predictive model to flag firms at insolvency risk, handling severe class imbalance with SMOTE and cost sensitive learning, and compared logistic regression, random forest, and gradient boosting on recall and ROC AUC given the high cost of false negatives in financial risk.</p>
+          <div class="project-tags">
+            <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">imbalanced-learn</span><span class="chip">SMOTE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. HR analytics -->
+      <article class="project reveal">
+        <div class="project-cover fit-contain" style="background-image: url('assets/projects/hr-analytics.png');">
+          <span class="label">Tableau · HR analytics</span>
+        </div>
+        <div class="project-body">
+          <h3>Interactive HR analytics dashboard</h3>
+          <span class="impact">Surfaced workforce demographics and attrition patterns for HR</span>
+          <p>A Tableau dashboard analysing employee data, including headcount, attrition rate, demographics, and department breakdowns, with interactive filters that let HR drill into specific groups. Designed to answer the questions HR teams ask first: who is leaving, where, and why.</p>
+          <div class="project-tags">
+            <span class="chip">Tableau</span><span class="chip">HR analytics</span><span class="chip">Dashboarding</span>
+          </div>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/INTERACTIVEHRANALYTICSDASHBOARD/HRANALYTICSDASHBOARD" target="_blank" rel="noopener">View dashboard</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. Sales dashboard -->
+      <article class="project reveal">
+        <div class="project-cover fit-contain" style="background-image: url('assets/projects/sales-dashboard.png');">
+          <span class="label">Tableau · Sales reporting</span>
+        </div>
+        <div class="project-body">
+          <h3>Dynamic sales dashboard</h3>
+          <span class="impact">Year over year sales tracking with category and regional drill downs</span>
+          <p>A Tableau sales dashboard showing total sales, profit, and quantity trends across years, with breakdowns by category, sub category, and region. Built to demonstrate the BI fundamentals: clean KPIs at the top, supporting visuals below, and interactive filters throughout.</p>
+          <div class="project-tags">
+            <span class="chip">Tableau</span><span class="chip">Sales analytics</span><span class="chip">BI</span>
+          </div>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/bikram.bhattarai/viz/SalesDashboardOverview_17309887480550/SalesDashboard" target="_blank" rel="noopener">View dashboard</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="section-cta center">
+      <a href="contact.html" class="btn btn-primary">Work with me</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year"></span> Bikram Bhattarai · Melbourne, Australia</span>
+    <span class="foot-links">
+      <a href="https://www.linkedin.com/in/bikram2051/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Bikram2051" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://public.tableau.com/app/profile/bikram.bhattarai/vizzes" target="_blank" rel="noopener">Tableau</a>
+    </span>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
