@@ -318,7 +318,22 @@ section { padding: clamp(56px, 8vw, 88px) 0; }
   border-radius: var(--radius); padding: 22px;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.skill-group:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.skill-group:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #C9D4E6; }
+
+/* Shared animated treatment for skill, cert and feature cards (matches project cards) */
+.skill-group, .cert, .feature { position: relative; overflow: hidden; }
+.skill-group::before, .cert::before, .feature::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
+  background: linear-gradient(90deg, var(--accent), #22D3EE);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.skill-group::after, .cert::after, .feature::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
+  opacity: 0; transition: opacity .3s ease;
+  background: radial-gradient(200px circle at var(--mx,50%) var(--my,50%), rgba(37,99,235,.10), transparent 60%);
+}
+.skill-group:hover::before, .cert:hover::before, .feature:hover::before { transform: scaleX(1); }
+.skill-group:hover::after, .cert:hover::after, .feature:hover::after { opacity: 1; }
 .skill-group h3 {
   font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 14px;

@@ -90,7 +90,7 @@
   }
   /* ----- Cursor spotlight on project cards ----- */
   if (!reduced) {
-    document.querySelectorAll('.project').forEach(function (card) {
+    document.querySelectorAll('.project, .skill-group, .cert, .feature').forEach(function (card) {
       card.addEventListener('mousemove', function (e) {
         var r = card.getBoundingClientRect();
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
