@@ -91,6 +91,11 @@ a.name:hover{color:var(--ink);}
 .contact-line a{color:var(--ink-soft);border-bottom:1px solid var(--rule);}
 .contact-line a:hover{color:var(--accent);border-color:var(--accent);}
 .contact-line .sep{color:var(--muted);padding:0 .45em;}
+.contact-line .ci{display:inline-block;}
+@media (max-width:640px){
+  .contact-line .sep{display:none;}
+  .contact-line .ci{display:block;margin:.1rem 0;}
+}
 
 .rule-double{
   border:0;border-top:3px double var(--rule-dark);
