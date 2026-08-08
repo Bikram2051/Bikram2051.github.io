@@ -12,8 +12,6 @@
     mark();
   }
 
-  document.documentElement.classList.add('js-reveal');
-
   var targets = document.querySelectorAll('.reveal, .signature');
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {

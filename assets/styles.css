@@ -4,10 +4,8 @@
    ========================================================== */
 
 /* ---------- Typefaces (self hosted) ---------- */
-@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ebgaramond-400-latin.woff2) format('woff2');}
-@font-face{font-family:'EB Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/ebgaramond-400i-latin.woff2) format('woff2');}
-@font-face{font-family:'EB Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ebgaramond-500-latin.woff2) format('woff2');}
-@font-face{font-family:'EB Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ebgaramond-600-latin.woff2) format('woff2');}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/ebgaramond-400-latin.woff2) format('woff2-variations');}
+@font-face{font-family:'EB Garamond';font-style:italic;font-weight:400 800;font-display:swap;src:url(fonts/ebgaramond-400i-latin.woff2) format('woff2-variations');}
 @font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/mrssaintdelafield-400-latin.woff2) format('woff2');}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/caveat-400-latin.woff2) format('woff2');}
 
@@ -221,11 +219,13 @@ a.name:hover{color:var(--ink);}
 .sign-off .said{font-style:italic;color:var(--muted);font-size:.95rem;margin-bottom:.1rem;}
 .signature{
   font-family:'Mrs Saint Delafield',cursive;
-  font-size:3.4rem;line-height:1;color:var(--pen);
+  font-size:3.4rem;line-height:1.55;color:var(--pen);
   margin:0;
 }
-.js-reveal .signature{clip-path:inset(0 100% 0 0);}
-.js-reveal .signature.visible{clip-path:inset(0 0 0 0);transition:clip-path 1.5s cubic-bezier(.35,.6,.3,1);}
+/* The script glyphs overshoot the line box, so the finished state has to sit
+   slightly outside it or the capital B loses its edge. */
+.js-reveal .signature{clip-path:inset(-.35em 100% -.3em 0);}
+.js-reveal .signature.visible{clip-path:inset(-.35em -.15em -.3em 0);transition:clip-path 1.4s cubic-bezier(.35,.6,.3,1);}
 
 /* ---------- Buttons ---------- */
 .btn{
