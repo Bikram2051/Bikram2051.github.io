@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg{fill:#FFFDF7;stroke:#D9D2C1}.c{stroke:#1F3A66}.m{stroke:#7A2E2A;fill:#7A2E2A}
+    @media (prefers-color-scheme:dark){.bg{fill:#1A1712;stroke:#3A342A}.c{stroke:#A9BEE4}.m{stroke:#D98B7E;fill:#D98B7E}}
+  </style>
+  <rect class="bg" x="1.5" y="1.5" width="61" height="61" rx="14" stroke-width="2"/>
+  <path class="c" d="M9.00 50.00 L10.18 49.99 L11.35 49.04 L12.53 44.77 L13.70 37.44 L14.88 29.50 L16.05 22.91 L17.23 18.54 L18.40 16.39 L19.58 16.07 L20.75 17.08 L21.93 18.97 L23.10 21.36 L24.27 23.98 L25.45 26.64 L26.62 29.21 L27.80 31.62 L28.97 33.83 L30.15 35.83 L31.32 37.62 L32.50 39.20 L33.67 40.60 L34.85 41.82 L36.02 42.89 L37.20 43.82 L38.38 44.62 L39.55 45.32 L40.73 45.93 L41.90 46.46 L43.07 46.91 L44.25 47.31 L45.43 47.65 L46.60 47.95 L47.77 48.20 L48.95 48.43 L50.12 48.62 L51.30 48.79 L52.48 48.94 L53.65 49.07 L54.82 49.18 L56.00 49.28" fill="none" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line class="m" x1="22.82" x2="22.82" y1="50" y2="11" stroke-width="3" stroke-dasharray="4 3.2"/>
+  <circle class="m" cx="22.82" cy="20.77" r="3.6"/>
+</svg>
