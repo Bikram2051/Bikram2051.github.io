@@ -20,7 +20,7 @@ permalink: /articles/
         <div>
           <h2 class="posts__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
           <p class="posts__sum">{{ post.description | default: post.excerpt | strip_html }}</p>
-          <p class="posts__where">{{ words | divided_by: 220 | at_least: 1 }} minute read{% if post.tags.size > 0 %}. {{ post.tags | join: ', ' | capitalize }}{% endif %}</p>
+          <p class="posts__where">{{ words | plus: 110 | divided_by: 220 | at_least: 1 }} minute read{% if post.tags.size > 0 %}. {{ post.tags | join: ', ' }}{% endif %}</p>
         </div>
       </li>
       {% endfor %}

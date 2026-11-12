@@ -1,7 +1,7 @@
 ---
 title: What 57,217 crashes say about car weight
 description: When two cars collide in Victoria, the driver of the lighter one is hurt twice as often. Notes from a semester with the state's crash data, including three things the data corrected me on.
-tags: [road safety, statistics, R]
+tags: [Road safety, statistics, R]
 ---
 
 This semester a classmate and I took one question to Victoria's road crash data: when two cars collide, how much does weight decide which driver is badly hurt?

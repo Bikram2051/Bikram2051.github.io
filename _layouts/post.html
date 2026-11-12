@@ -2,7 +2,7 @@
 layout: default
 ---
 {% assign words = content | strip_html | number_of_words %}
-{% assign minutes = words | divided_by: 220 | at_least: 1 %}
+{% assign minutes = words | plus: 110 | divided_by: 220 | at_least: 1 %}
 <article>
   <header class="wrap page-head">
     <p class="crumb"><a href="/articles/">Articles</a></p>

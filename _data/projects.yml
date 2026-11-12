@@ -18,6 +18,8 @@ featured:
     links:
       - label: Read the case study
         url: /projects/crash-weight/
+      - label: Read the article
+        url: /articles/2026/what-57217-crashes-say-about-car-weight/
 
   - id: oshc
     title: OSHC When It Matters
@@ -35,6 +37,8 @@ featured:
         We also designed the evaluation so that nobody builds against the held-out set they are scored on.
     tools: Python, Streamlit, Claude Haiku (Anthropic API), pytest
     links:
+      - label: Read the article
+        url: /articles/2026/the-file-i-am-not-allowed-to-read/
       - label: View the repository
         url: https://github.com/Bikram2051/oshc-when-it-matters
 
@@ -70,6 +74,8 @@ featured:
         The team used those splits for the BERT and FinBERT models and a Streamlit dashboard that displayed the metrics.
     tools: Python, pandas, Hugging Face, BERT and FinBERT
     links:
+      - label: Read the article
+        url: /articles/2026/the-98-9-percent-score-that-was-a-bug/
       - label: View the repository
         url: https://github.com/TDP-2026-Repository/TECHNOLOGY-DESIGN-PROJECT
 
@@ -105,6 +111,8 @@ more:
       reappears in the client.
     tools: JavaScript, Cloudflare Workers and KV, GitHub Actions
     links:
+      - label: Read the article
+        url: /articles/2026/deleting-a-chat-on-two-devices/
       - label: View the repository
         url: https://github.com/Bikram2051/AlVik
 
