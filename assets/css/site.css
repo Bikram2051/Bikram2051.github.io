@@ -348,20 +348,6 @@ figcaption.figure__title { display: block; }
   .flow.is-live li.is-out { animation-name: flow-step; }
 }
 
-.rake { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: end; height: 150px; border-bottom: 1px solid var(--ink); padding-inline: 0.5rem; }
-.rake__group { position: relative; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
-.rake__bar { width: 24px; border-radius: 4px 4px 0 0; background: var(--series-1); height: calc(var(--to) * 1%); }
-.rake__target { position: absolute; left: 50%; bottom: calc(var(--to) * 1%); width: 56px; margin-left: -28px; border-top: 2px solid var(--ink); }
-.rake__labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding-inline: 0.5rem; font-size: 0.875rem; color: var(--slate); text-align: center; margin-top: 0.4rem; }
-@media (prefers-reduced-motion: no-preference) {
-  .rake.is-live .rake__bar { animation: rake 5.5s cubic-bezier(0.3, 0.6, 0.2, 1) infinite; }
-  @keyframes rake {
-    0%, 18% { height: calc(var(--from) * 1%); }
-    45%, 88% { height: calc(var(--to) * 1%); }
-    100% { height: calc(var(--from) * 1%); }
-  }
-}
-
 .curve svg { display: block; width: 100%; height: auto; overflow: visible; }
 .curve text { font-family: var(--sans); font-size: 13px; fill: var(--slate); }
 .curve .t-ink { fill: var(--ink); font-weight: 620; }

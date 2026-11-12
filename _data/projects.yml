@@ -42,24 +42,6 @@ featured:
       - label: View the repository
         url: https://github.com/Bikram2051/oshc-when-it-matters
 
-  - id: survey-platform
-    title: Survey platform
-    context: "Backend MVP for survey and field data collection, built for the Nepal market."
-    figure: fig-survey.html
-    summary: >-
-      The backend for a multi-tenant survey platform: versioned questionnaires in English and Nepali,
-      offline sync for field teams, and a public link for self-response. Each client's data is kept apart
-      by Postgres row-level security, so isolation is enforced by the database and proven by tests.
-    more:
-      - >-
-        The statistics layer rakes responses to census margins, then reports Kish effective sample sizes,
-        standard errors and design effects, so no estimate leaves the API as a bare percentage.
-        Self-selected responses stay out of estimates unless someone forces them in, and then they carry a warning.
-    tools: Python, Django REST Framework, PostgreSQL, Docker, pytest
-    links:
-      - label: View the repository
-        url: https://github.com/Bikram2051/survey-platform
-
   - id: sentiment
     title: Domain adaptive sentiment analysis
     context: "Team project, Swinburne, completed. My role: data engineer."
