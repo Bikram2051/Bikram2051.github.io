@@ -71,8 +71,8 @@ featured:
       consistent shape, and producing the train, validation and test splits the modelling work ran on.
     more:
       - >-
-        The team used those splits for the BERT and FinBERT models and a Streamlit dashboard that displayed the metrics.
-    tools: Python, pandas, Hugging Face, BERT and FinBERT
+        The team used those splits to fine-tune BERT (bert-base-uncased) in three ways, and built a Streamlit dashboard that displayed the metrics.
+    tools: Python, pandas, Hugging Face, BERT
     links:
       - label: Read the article
         url: /articles/2026/the-98-9-percent-score-that-was-a-bug/
@@ -97,24 +97,6 @@ more:
     links:
       - label: Open the dashboard
         url: https://public.tableau.com/app/profile/bikram.bhattarai/viz/BANKLOANDASHBOARD_17339885232100/Summary
-
-  - id: alvik
-    title: AlVik
-    context: Personal project.
-    short: A single-file AI chat client behind its own Cloudflare Worker, built to keep every secret out of the browser.
-    body: >-
-      A fast AI chat client that lives in a single HTML file, with its own Cloudflare Worker in front of
-      the model providers. The aim was to keep every secret out of the browser. The Worker holds the API
-      keys and the password, signs expiring sessions and only answers calls from allowed origins. Chats
-      sync between devices through Cloudflare KV, and deletions are stored as tombstones, so a device that
-      was offline cannot bring a deleted chat back. A CI check fails the build if a password or key ever
-      reappears in the client.
-    tools: JavaScript, Cloudflare Workers and KV, GitHub Actions
-    links:
-      - label: Read the article
-        url: /articles/2026/deleting-a-chat-on-two-devices/
-      - label: View the repository
-        url: https://github.com/Bikram2051/AlVik
 
   - id: ev-population
     title: Electric vehicle population analysis
