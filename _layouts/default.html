@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="/assets/js/site.js?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
+{% if page.charts %}
+<script src="/assets/js/charts.js?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
+{% endif %}
+{% if page.script %}
+<script src="/assets/js/{{ page.script }}?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
+{% endif %}
+</body>
+</html>

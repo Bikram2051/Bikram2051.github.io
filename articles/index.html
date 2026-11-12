@@ -1,0 +1,55 @@
+---
+layout: default
+title: Articles
+description: Notes by Bikram Bhattarai on data analysis, statistics and what the numbers say about Australia.
+permalink: /articles/
+---
+<header class="wrap page-head">
+  <h1 class="page-head__title">Articles</h1>
+  <p class="page-head__lede">Notes on analysis I have done and things I learned doing it.</p>
+</header>
+
+<section class="section" style="padding-top: 1.5rem">
+  <div class="wrap">
+    {% if site.posts.size > 0 %}
+    <ul class="posts">
+      {% for post in site.posts %}
+      {% assign words = post.content | strip_html | number_of_words %}
+      <li class="posts__item">
+        <time class="posts__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %B %Y' }}</time>
+        <div>
+          <h2 class="posts__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <p class="posts__sum">{{ post.description | default: post.excerpt | strip_html }}</p>
+          <p class="posts__where">{{ words | divided_by: 220 | at_least: 1 }} minute read{% if post.tags.size > 0 %}. {{ post.tags | join: ', ' | capitalize }}{% endif %}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="lede">Nothing published yet.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% if site.data.elsewhere and site.data.elsewhere.size > 0 %}
+<section class="section section--wash" aria-labelledby="elsewhere-title">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title" id="elsewhere-title">Posted elsewhere</h2>
+    </div>
+    <ul class="posts">
+      {% assign items = site.data.elsewhere | sort: 'date' | reverse %}
+      {% for item in items %}
+      <li class="posts__item">
+        <time class="posts__date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%-d %B %Y' }}</time>
+        <div>
+          <h3 class="posts__title"><a href="{{ item.url }}" rel="noopener">{{ item.title }}</a></h3>
+          {% if item.note %}<p class="posts__sum">{{ item.note }}</p>{% endif %}
+          <p class="posts__where">On {{ item.where }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

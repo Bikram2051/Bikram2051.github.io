@@ -1,0 +1,38 @@
+{% comment %} Who was hurt, by weight gap. Numbers come from _data/crash.json {% endcomment %}
+{% assign bands = site.data.crash.gap_bands %}
+{% assign all = site.data.crash.gap_all %}
+<figure class="figure" aria-labelledby="{{ include.id | default: 'split' }}-title">
+  <{{ include.tag | default: 'h3' }} class="figure__title" id="{{ include.id | default: 'split' }}-title">The bigger the weight gap, the more often it is the lighter car's driver who is hurt</{{ include.tag | default: 'h3' }}>
+  <p class="figure__sub">Two-car crashes where exactly one driver was killed or seriously injured, by the weight gap between the cars.</p>
+  <ul class="legend" aria-hidden="true">
+    <li><i></i>Lighter car's driver</li>
+    <li><i class="is-quiet"></i>Heavier car's driver</li>
+  </ul>
+  <ul class="split" data-reveal>
+    {% for b in bands %}
+    <li class="split__row" style="--v: {{ b.share }}">
+      <span class="split__band">{{ b.label }}</span>
+      <span class="split__bar">
+        <span class="split__seg split__seg--a"><span class="visually-hidden">Lighter car's driver </span>{{ b.share | round }}%</span>
+        <span class="split__seg split__seg--b"><span class="visually-hidden">Heavier car's driver </span>{{ b.rest | round }}%</span>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="split__axis" aria-hidden="true"><span>Line marks an even split</span></p>
+  <p class="figure__note">Victoria, 2012 to September 2024. {{ all.one_sided_fmt }} crashes with one driver hurt.{% if include.link %} <a href="/projects/crash-weight/">Read the case study</a>{% endif %}</p>
+  {% if include.table %}
+  <details class="numbers">
+    <summary>Show the numbers</summary>
+    <div class="numbers__scroll">
+      <table class="data">
+        <thead><tr><th scope="col">Weight gap</th><th scope="col" class="num">Lighter car's driver hurt</th><th scope="col" class="num">Heavier car's driver hurt</th><th scope="col" class="num">Lighter share (95% CI)</th></tr></thead>
+        <tbody>
+          {% for b in bands %}<tr><th scope="row">{{ b.label }}</th><td class="num">{{ b.lighter_fmt }}</td><td class="num">{{ b.heavier_fmt }}</td><td class="num">{{ b.share }}% ({{ b.ci_low }} to {{ b.ci_high }})</td></tr>
+          {% endfor %}<tr><th scope="row">All gaps</th><td class="num">{{ all.lighter_fmt }}</td><td class="num">{{ all.heavier_fmt }}</td><td class="num">{{ all.share }}%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  {% endif %}
+</figure>

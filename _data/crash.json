@@ -1,0 +1,585 @@
+{
+ "flow": [
+  {
+   "step": "All recorded crashes",
+   "crashes": 182039,
+   "crashes_fmt": "182,039",
+   "pct": 100.0
+  },
+  {
+   "step": "Exactly two vehicles",
+   "crashes": 102569,
+   "crashes_fmt": "102,569",
+   "pct": 56.34
+  },
+  {
+   "step": "Both passenger vehicles",
+   "crashes": 64206,
+   "crashes_fmt": "64,206",
+   "pct": 35.27
+  },
+  {
+   "step": "Both weights plausible (600 to 3,500 kg)",
+   "crashes": 61869,
+   "crashes_fmt": "61,869",
+   "pct": 33.99
+  },
+  {
+   "step": "One recorded driver per vehicle",
+   "crashes": 58283,
+   "crashes_fmt": "58,283",
+   "pct": 32.02
+  },
+  {
+   "step": "Both manufacture years usable",
+   "crashes": 57217,
+   "crashes_fmt": "57,217",
+   "pct": 31.43
+  }
+ ],
+ "gap_bands": [
+  {
+   "label": "Up to 100 kg",
+   "lighter": 1040,
+   "heavier": 966,
+   "one_sided": 2006,
+   "share": 51.8,
+   "rest": 48.2,
+   "ci_low": 49.6,
+   "ci_high": 54.1,
+   "ratio": 1.08,
+   "lighter_fmt": "1,040",
+   "heavier_fmt": "966",
+   "one_sided_fmt": "2,006"
+  },
+  {
+   "label": "100 to 300 kg",
+   "lighter": 2204,
+   "heavier": 1481,
+   "one_sided": 3685,
+   "share": 59.8,
+   "rest": 40.2,
+   "ci_low": 58.2,
+   "ci_high": 61.4,
+   "ratio": 1.49,
+   "lighter_fmt": "2,204",
+   "heavier_fmt": "1,481",
+   "one_sided_fmt": "3,685"
+  },
+  {
+   "label": "300 to 500 kg",
+   "lighter": 1894,
+   "heavier": 840,
+   "one_sided": 2734,
+   "share": 69.3,
+   "rest": 30.7,
+   "ci_low": 67.5,
+   "ci_high": 71.0,
+   "ratio": 2.25,
+   "lighter_fmt": "1,894",
+   "heavier_fmt": "840",
+   "one_sided_fmt": "2,734"
+  },
+  {
+   "label": "500 to 800 kg",
+   "lighter": 1859,
+   "heavier": 561,
+   "one_sided": 2420,
+   "share": 76.8,
+   "rest": 23.2,
+   "ci_low": 75.1,
+   "ci_high": 78.5,
+   "ratio": 3.31,
+   "lighter_fmt": "1,859",
+   "heavier_fmt": "561",
+   "one_sided_fmt": "2,420"
+  },
+  {
+   "label": "Over 800 kg",
+   "lighter": 1189,
+   "heavier": 197,
+   "one_sided": 1386,
+   "share": 85.8,
+   "rest": 14.2,
+   "ci_low": 83.8,
+   "ci_high": 87.6,
+   "ratio": 6.04,
+   "lighter_fmt": "1,189",
+   "heavier_fmt": "197",
+   "one_sided_fmt": "1,386"
+  }
+ ],
+ "gap_all": {
+  "lighter": 8186,
+  "heavier": 4045,
+  "one_sided": 12231,
+  "share": 66.9,
+  "crashes": 57867,
+  "lighter_fmt": "8,186",
+  "heavier_fmt": "4,045",
+  "one_sided_fmt": "12,231",
+  "crashes_fmt": "57,867"
+ },
+ "forest": [
+  {
+   "label": "Vehicle",
+   "kind": "head"
+  },
+  {
+   "label": "Own car 10% heavier",
+   "kind": "est",
+   "or": 0.796,
+   "lo": 0.784,
+   "hi": 0.808
+  },
+  {
+   "label": "Car 5 years older",
+   "kind": "est",
+   "or": 1.103,
+   "lo": 1.076,
+   "hi": 1.13
+  },
+  {
+   "label": "Driver age",
+   "kind": "head"
+  },
+  {
+   "label": "16 to 17",
+   "kind": "est",
+   "or": 0.474,
+   "lo": 0.271,
+   "hi": 0.83
+  },
+  {
+   "label": "18 to 21",
+   "kind": "est",
+   "or": 0.673,
+   "lo": 0.596,
+   "hi": 0.76
+  },
+  {
+   "label": "22 to 25",
+   "kind": "est",
+   "or": 0.751,
+   "lo": 0.668,
+   "hi": 0.845
+  },
+  {
+   "label": "26 to 29",
+   "kind": "est",
+   "or": 0.842,
+   "lo": 0.745,
+   "hi": 0.951
+  },
+  {
+   "label": "30 to 39 (reference)",
+   "kind": "ref",
+   "or": 1
+  },
+  {
+   "label": "40 to 49",
+   "kind": "est",
+   "or": 1.261,
+   "lo": 1.139,
+   "hi": 1.396
+  },
+  {
+   "label": "50 to 59",
+   "kind": "est",
+   "or": 1.639,
+   "lo": 1.472,
+   "hi": 1.827
+  },
+  {
+   "label": "60 to 64",
+   "kind": "est",
+   "or": 1.837,
+   "lo": 1.577,
+   "hi": 2.14
+  },
+  {
+   "label": "65 to 69",
+   "kind": "est",
+   "or": 2.358,
+   "lo": 1.993,
+   "hi": 2.789
+  },
+  {
+   "label": "70 and over",
+   "kind": "est",
+   "or": 4.594,
+   "lo": 4.032,
+   "hi": 5.233
+  },
+  {
+   "label": "Age not recorded",
+   "kind": "muted",
+   "or": 0.203,
+   "lo": 0.105,
+   "hi": 0.393
+  },
+  {
+   "label": "Driver sex",
+   "kind": "head"
+  },
+  {
+   "label": "Male (reference)",
+   "kind": "ref",
+   "or": 1
+  },
+  {
+   "label": "Female",
+   "kind": "est",
+   "or": 2.544,
+   "lo": 2.379,
+   "hi": 2.722
+  },
+  {
+   "label": "Sex not recorded",
+   "kind": "muted",
+   "or": 1.226,
+   "lo": 0.637,
+   "hi": 2.36
+  },
+  {
+   "label": "Seatbelt",
+   "kind": "head"
+  },
+  {
+   "label": "Worn (reference)",
+   "kind": "ref",
+   "or": 1
+  },
+  {
+   "label": "Not worn",
+   "kind": "est",
+   "or": 2.008,
+   "lo": 1.573,
+   "hi": 2.564
+  },
+  {
+   "label": "Other",
+   "kind": "est",
+   "or": 0.72,
+   "lo": 0.487,
+   "hi": 1.064
+  },
+  {
+   "label": "Not known",
+   "kind": "muted",
+   "or": 0.869,
+   "lo": 0.767,
+   "hi": 0.985
+  },
+  {
+   "label": "Point of impact",
+   "kind": "head"
+  },
+  {
+   "label": "Front (reference)",
+   "kind": "ref",
+   "or": 1
+  },
+  {
+   "label": "Rear",
+   "kind": "est",
+   "or": 1.181,
+   "lo": 1.09,
+   "hi": 1.279
+  },
+  {
+   "label": "Left side",
+   "kind": "est",
+   "or": 1.368,
+   "lo": 1.199,
+   "hi": 1.56
+  },
+  {
+   "label": "Right side (driver's side)",
+   "kind": "est",
+   "or": 1.876,
+   "lo": 1.679,
+   "hi": 2.098
+  },
+  {
+   "label": "Other or unknown",
+   "kind": "muted",
+   "or": 0.628,
+   "lo": 0.499,
+   "hi": 0.789
+  }
+ ],
+ "headline": {
+  "adjusted": {
+   "or": 0.796,
+   "lo": 0.784,
+   "hi": 0.808
+  },
+  "crude": {
+   "or": 0.764,
+   "lo": 0.754,
+   "hi": 0.774
+  },
+  "complete": {
+   "or": 0.793,
+   "lo": 0.779,
+   "hi": 0.808
+  },
+  "per100": {
+   "or": 0.853,
+   "lo": 0.844,
+   "hi": 0.862
+  }
+ },
+ "steps": [
+  {
+   "label": "Weight only",
+   "or": 0.764,
+   "share": 0
+  },
+  {
+   "label": "+ vehicle age",
+   "or": 0.768,
+   "share": 12
+  },
+  {
+   "label": "+ driver age",
+   "or": 0.76,
+   "share": -11
+  },
+  {
+   "label": "+ driver sex",
+   "or": 0.785,
+   "share": 67
+  },
+  {
+   "label": "+ seatbelt",
+   "or": 0.764,
+   "share": 1
+  },
+  {
+   "label": "+ point of impact",
+   "or": 0.764,
+   "share": 1
+  },
+  {
+   "label": "All five together",
+   "or": 0.796,
+   "share": 100
+  }
+ ],
+ "shape": [
+  {
+   "kg": 1000,
+   "linear": 2.218,
+   "log": 2.641,
+   "spline": 2.579,
+   "kg_fmt": "1,000"
+  },
+  {
+   "kg": 1250,
+   "linear": 1.489,
+   "log": 1.548,
+   "spline": 1.539,
+   "kg_fmt": "1,250"
+  },
+  {
+   "kg": 1500,
+   "linear": 1.0,
+   "log": 1.0,
+   "spline": 1.0,
+   "kg_fmt": "1,500"
+  },
+  {
+   "kg": 1750,
+   "linear": 0.671,
+   "log": 0.691,
+   "spline": 0.699,
+   "kg_fmt": "1,750"
+  },
+  {
+   "kg": 2000,
+   "linear": 0.451,
+   "log": 0.502,
+   "spline": 0.497,
+   "kg_fmt": "2,000"
+  },
+  {
+   "kg": 2250,
+   "linear": 0.303,
+   "log": 0.379,
+   "spline": 0.356,
+   "kg_fmt": "2,250"
+  },
+  {
+   "kg": 2500,
+   "linear": 0.203,
+   "log": 0.294,
+   "spline": 0.257,
+   "kg_fmt": "2,500"
+  }
+ ],
+ "shape_coef": {
+  "log_power": -2.3955,
+  "linear_per_kg": -0.0015934
+ },
+ "calibration": [
+  {
+   "label": "Up to 100 kg",
+   "observed": 1.08,
+   "linear": 1.11,
+   "log": 1.12
+  },
+  {
+   "label": "100 to 300 kg",
+   "observed": 1.5,
+   "linear": 1.46,
+   "log": 1.51
+  },
+  {
+   "label": "300 to 500 kg",
+   "observed": 2.27,
+   "linear": 2.13,
+   "log": 2.22
+  },
+  {
+   "label": "500 to 800 kg",
+   "observed": 3.33,
+   "linear": 3.28,
+   "log": 3.3
+  },
+  {
+   "label": "Over 800 kg",
+   "observed": 6.02,
+   "linear": 6.84,
+   "log": 6.06
+  }
+ ],
+ "by_year": [
+  {
+   "year": 2012,
+   "median_kg": 1395.0,
+   "median_gap": 300.0,
+   "median_kg_fmt": "1,395"
+  },
+  {
+   "year": 2013,
+   "median_kg": 1400.0,
+   "median_gap": 302.0,
+   "median_kg_fmt": "1,400"
+  },
+  {
+   "year": 2014,
+   "median_kg": 1400.0,
+   "median_gap": 304.5,
+   "median_kg_fmt": "1,400"
+  },
+  {
+   "year": 2015,
+   "median_kg": 1400.0,
+   "median_gap": 300.0,
+   "median_kg_fmt": "1,400"
+  },
+  {
+   "year": 2016,
+   "median_kg": 1440.0,
+   "median_gap": 305.0,
+   "median_kg_fmt": "1,440"
+  },
+  {
+   "year": 2017,
+   "median_kg": 1450.0,
+   "median_gap": 305.0,
+   "median_kg_fmt": "1,450"
+  },
+  {
+   "year": 2018,
+   "median_kg": 1450.0,
+   "median_gap": 310.0,
+   "median_kg_fmt": "1,450"
+  },
+  {
+   "year": 2019,
+   "median_kg": 1455.5,
+   "median_gap": 320.0,
+   "median_kg_fmt": "1,455.5"
+  },
+  {
+   "year": 2020,
+   "median_kg": 1465.0,
+   "median_gap": 316.0,
+   "median_kg_fmt": "1,465"
+  },
+  {
+   "year": 2021,
+   "median_kg": 1477.0,
+   "median_gap": 325.0,
+   "median_kg_fmt": "1,477"
+  },
+  {
+   "year": 2022,
+   "median_kg": 1480.0,
+   "median_gap": 320.0,
+   "median_kg_fmt": "1,480"
+  },
+  {
+   "year": 2023,
+   "median_kg": 1488.0,
+   "median_gap": 340.0,
+   "median_kg_fmt": "1,488"
+  },
+  {
+   "year": 2024,
+   "median_kg": 1495.0,
+   "median_gap": 330.0,
+   "median_kg_fmt": "1,495"
+  }
+ ],
+ "secondary": {
+  "main": {
+   "or": 0.796,
+   "lo": 0.784,
+   "hi": 0.808,
+   "informative": 12078,
+   "power": 2.4,
+   "power_lo": 2.24,
+   "power_hi": 2.55
+  },
+  "crude": {
+   "or": 0.764,
+   "lo": 0.754,
+   "hi": 0.774,
+   "informative": 12078,
+   "power": 2.83,
+   "power_lo": 2.69,
+   "power_hi": 2.96
+  },
+  "zone_low": {
+   "or": 0.802,
+   "lo": 0.786,
+   "hi": 0.819,
+   "informative": 11787,
+   "power": 2.31,
+   "power_lo": 2.1,
+   "power_hi": 2.52
+  },
+  "zone_high": {
+   "or": 0.79,
+   "lo": 0.773,
+   "hi": 0.806,
+   "informative": 11787,
+   "power": 2.48,
+   "power_lo": 2.26,
+   "power_hi": 2.7
+  },
+  "deaths": {
+   "or": 0.573,
+   "lo": 0.478,
+   "hi": 0.687,
+   "informative": 279,
+   "power": 5.84,
+   "power_lo": 3.94,
+   "power_hi": 7.74
+  }
+ }
+}

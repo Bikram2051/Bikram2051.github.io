@@ -1,0 +1,45 @@
+---
+layout: default
+title: Write
+permalink: /write/
+noindex: true
+sitemap: false
+---
+{% assign repo = "https://github.com/" | append: site.repository %}
+<header class="wrap page-head">
+  <h1 class="page-head__title">Write</h1>
+  <p class="page-head__lede">Shortcuts for adding and editing articles. Each one opens GitHub, where you sign in and save. The site updates about a minute after you commit.</p>
+</header>
+<section class="section" style="padding-top: 1rem">
+  <div class="wrap owner">
+    <h2>New article</h2>
+    <p><a class="btn" id="new-post" href="{{ repo }}/new/main/_posts">Start a new article</a></p>
+    <p>The file name sets the date and the web address: <code>2026-11-20-my-title.md</code>. Write in Markdown under the second <code>---</code> line. To keep a draft out of sight, add the line <code>published: false</code> to the top block.</p>
+
+    <h2>Edit an article</h2>
+    <ul>
+      {% for post in site.posts %}
+      <li><a href="{{ repo }}/edit/main/{{ post.path }}">{{ post.title }}</a> ({{ post.date | date: '%-d %b %Y' }})</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Add a post from LinkedIn, X or Facebook</h2>
+    <p><a href="{{ repo }}/edit/main/_data/elsewhere.yml">Open the list of posts made elsewhere</a>, copy the example, and paste in the link to your post. It then shows on the Articles page under "Posted elsewhere".</p>
+
+    <h2>Add an image</h2>
+    <p><a href="{{ repo }}/upload/main/assets/posts">Upload it to assets/posts</a>, then use it in an article like this:</p>
+<pre>![What the image shows](/assets/posts/my-chart.png)</pre>
+
+    <h2>Change a project</h2>
+    <p>Project text lives in one file: <a href="{{ repo }}/edit/main/_data/projects.yml">_data/projects.yml</a>.</p>
+  </div>
+</section>
+<script>
+  (function () {
+    var link = document.getElementById('new-post');
+    var now = new Date();
+    var day = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+    var template = '---\ntitle: Your title here\ndescription: One or two sentences that say what the article is about. This shows in lists and in link previews.\ntags: [statistics]\n---\n\nStart writing here.\n';
+    link.href = link.href + '?filename=' + encodeURIComponent(day + '-your-title.md') + '&value=' + encodeURIComponent(template);
+  })();
+</script>

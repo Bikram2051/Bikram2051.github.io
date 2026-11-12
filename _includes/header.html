@@ -1,0 +1,18 @@
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="wordmark" href="/">Bikram Bhattarai</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/projects/"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Work</a></li>
+        <li><a href="/articles/"{% if page.url contains '/articles/' %} aria-current="page"{% endif %}>Articles</a></li>
+        <li><a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__tools">
+      <a class="btn btn--line" href="/assets/Bikram-Bhattarai-Resume.pdf">Resume</a>
+      <button class="theme-toggle" type="button" data-theme-toggle hidden>Dark</button>
+    </div>
+  </div>
+</header>

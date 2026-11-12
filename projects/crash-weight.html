@@ -1,0 +1,264 @@
+---
+layout: default
+title: Vehicle weight and driver injury in two-car crashes
+description: "A matched-pair study of 57,217 two-car crashes in Victoria. Each 10% of extra vehicle weight went with about 20% lower odds of the driver being killed or seriously injured."
+permalink: /projects/crash-weight/
+charts: true
+script: crash.js
+---
+{% assign c = site.data.crash %}
+<article>
+  <header class="wrap page-head">
+    <p class="crumb"><a href="/projects/">Work</a></p>
+    <h1 class="page-head__title page-head__title--long">Vehicle weight and driver injury in two-car crashes</h1>
+    <p class="page-head__lede">When two cars collide in Victoria, how much does weight decide which driver is killed or seriously injured? A matched-pair study of 57,217 crashes.</p>
+  </header>
+
+  <div class="wrap">
+    <dl class="facts">
+      <div><dt>My part</dt><dd>The data build, the models and the figures</dd></div>
+      <div><dt>Team</dt><dd>Two people, Swinburne COS80023 Big Data, 2026</dd></div>
+      <div><dt>Tools</dt><dd>R: survival, dplyr, splines, ggplot2</dd></div>
+      <div><dt>Data</dt><dd>Victoria Road Crash Data, 2012 to September 2024</dd></div>
+    </dl>
+  </div>
+
+  <div class="wrap section case" style="padding-top: 0">
+    <div class="prose">
+
+      <p>Heavier cars protect the people inside them. That has been known since the early 1990s, mostly from American fatality data. We wanted to see what it looks like in Victoria now, for serious injuries as well as deaths, in a fleet that keeps getting heavier.</p>
+
+      <dl class="keyline">
+        <div><dt>0.796</dt><dd>Odds ratio for each 10% of extra weight, after adjustment (95% CI 0.784 to 0.808)</dd></div>
+        <div><dt>2 in 3</dt><dd>When only one driver was hurt, it was the lighter car's driver</dd></div>
+        <div><dt>2.4</dt><dd>The odds between the two drivers follow the weight ratio raised to this power</dd></div>
+      </dl>
+
+      <h2 id="why-compare-the-two-drivers-in-the-same-crash">Why compare the two drivers in the same crash</h2>
+      <p>Light and heavy cars are not driven by the same people on the same roads. An ordinary regression has to adjust for all of that and will still miss some of it. So we treated each crash as a matched pair. Both drivers share the road, the speed limit, the weather and the moment, which means none of those can explain why one was hurt and the other was not.</p>
+      <p>Conditional logistic regression makes exactly that comparison, with one stratum per crash. The price is that a crash only informs the model when the two outcomes differ. Of the 57,217 crashes, 12,078 had exactly one driver killed or seriously injured. The other 45,139 say nothing about which car was safer.</p>
+
+      <h2 id="from-182-039-crashes-to-57-217">From 182,039 crashes to 57,217</h2>
+      <p>Five filters, applied in order. Weight is tare weight, the empty mass recorded at registration. Passenger vehicles are cars, wagons, utes, panel vans and taxis.</p>
+
+      <figure class="figure">
+        <h3 class="figure__title">Most crashes drop out because they are not between two passenger vehicles</h3>
+        <ol class="steps" data-reveal>
+          {% for s in c.flow %}
+          <li class="steps__row" style="--w: {{ s.pct }}">
+            <span class="steps__label">{{ s.step }}</span>
+            <span class="steps__n">{{ s.crashes_fmt }}</span>
+            <span class="steps__bar"></span>
+          </li>
+          {% endfor %}
+        </ol>
+        <p class="figure__note">Crashes remaining after each step. Victoria Road Crash Data, 2012 to September 2024.</p>
+      </figure>
+
+      <p>Every column is read as text first, because some codes look like numbers and are not: a speed zone of 999 means unknown, not 999 km/h. Unknown values stay as their own category. Seatbelt use alone is not recorded for 28.9% of drivers, so dropping those rows would have thrown away over a quarter of the data.</p>
+      <p>None of the filters uses the injury outcome. The main bias is in who is missing: a plausible weight is recorded for 99% of cars registered in Victoria but only 21% of those registered in South Australia, so interstate vehicles are under-represented.</p>
+
+      <h2 id="the-raw-pattern">The raw pattern</h2>
+      <p>Before any model, count. In crashes where exactly one driver was killed or seriously injured, it was the lighter car's driver 8,186 times and the heavier car's driver 4,045 times. With less than 100 kg between the cars the split is close to even. Above 800 kg it is six to one. These counts use every crash with two different weights, before the last filter, so the total is slightly larger than the model's.</p>
+
+      <div class="figure figure--wide">
+        {% include fig-split.html id="case-split" tag="h3" table=true %}
+      </div>
+
+      <h2 id="the-model">The model</h2>
+      <p>After adjusting for vehicle age, driver age and sex, seatbelt use and point of impact, each 10% of extra weight went with about 20% lower odds of the driver being killed or seriously injured: an odds ratio of 0.796, with a 95% confidence interval of 0.784 to 0.808.</p>
+
+      <figure class="figure figure--wide">
+        <h3 class="figure__title">Weight protects, and the other factors behave as crash physics predicts</h3>
+        <p class="figure__sub">Adjusted odds ratios with 95% confidence intervals. Left of the line means lower odds of being killed or seriously injured than the other driver in the same crash.</p>
+        <ul class="legend" aria-hidden="true">
+          <li><i style="border-radius: 50%"></i>Estimate</li>
+          <li><i style="border-radius: 50%; background: transparent; border: 1.5px solid var(--ink)"></i>Reference group</li>
+          <li><i class="is-dot"></i>Not interpretable *</li>
+        </ul>
+        <div class="chart" id="chart-forest"></div>
+        <p class="figure__note">* Whether police record these details depends on what happened to the driver, so the unknown groups are kept to hold each pair together and are not read as effects. 57,217 crashes, 12,078 with one driver hurt.</p>
+        <details class="numbers">
+          <summary>Show the numbers</summary>
+          <div class="numbers__scroll">
+            <table class="data">
+              <thead><tr><th scope="col">Factor</th><th scope="col" class="num">Odds ratio</th><th scope="col" class="num">95% CI</th></tr></thead>
+              <tbody>
+                {% for r in c.forest %}{% if r.kind == 'head' %}<tr><th scope="row" colspan="3"><b>{{ r.label }}</b></th></tr>
+                {% elsif r.kind == 'ref' %}<tr><th scope="row">{{ r.label }}</th><td class="num">1</td><td class="num"></td></tr>
+                {% else %}<tr><th scope="row">{{ r.label }}{% if r.kind == 'muted' %} *{% endif %}</th><td class="num">{{ r.or }}</td><td class="num">{{ r.lo }} to {{ r.hi }}</td></tr>
+                {% endif %}{% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+
+      <p>Drivers aged 70 and over had 4.6 times the odds of drivers in their thirties in the same crash. An unbelted driver had twice the odds. A hit on the right side, which is the driver's side in Australia, was the worst place to be struck. In American data it is the left side, the mirror image.</p>
+      <p>Female drivers had 2.5 times the odds of male drivers in the same crash. That points the same way as overseas research but is larger. Part of the reason is probably the outcome itself: serious injury here comes from police reports and leans on whether the driver was taken to hospital, not on a medical injury scale. We could not test that with this data.</p>
+
+      <h2 id="the-confounder-was-not-the-one-we-expected">The confounder was not the one we expected</h2>
+      <p>We expected vehicle age to matter most, since older cars are lighter and less safe. It barely moved the estimate. Driver sex did.</p>
+
+      <figure class="figure">
+        <h3 class="figure__title">Adding driver sex alone accounts for two thirds of the shift</h3>
+        <p class="figure__sub">Odds ratio per 10% heavier when each factor is added on its own to the weight-only model.</p>
+        <div class="chart" id="chart-steps"></div>
+        <details class="numbers">
+          <summary>Show the numbers</summary>
+          <div class="numbers__scroll">
+            <table class="data">
+              <thead><tr><th scope="col">Model</th><th scope="col" class="num">Odds ratio per 10% heavier</th><th scope="col" class="num">Share of the total shift</th></tr></thead>
+              <tbody>
+                {% for s in c.steps %}<tr><th scope="row">{{ s.label }}</th><td class="num">{{ s.or }}</td><td class="num">{{ s.share }}%</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+
+      <p>Women drove lighter cars, a median of 1,351 kg against 1,500 kg for men. When a man and a woman crashed, the woman was in the lighter car 64% of the time. Women also had higher odds of serious injury, so the weight-only model was giving weight the credit for part of a sex difference.</p>
+
+      <h2 id="testing-the-shape-instead-of-assuming-it">Testing the shape instead of assuming it</h2>
+      <p>The plan was to model weight per 100 kg, a straight line. Before trusting that, I tested it against a flexible spline, and the spline fitted better (likelihood ratio chi-square 14.2 on 3 degrees of freedom, p = 0.003). The straight line understates the risk for the lightest cars and overstates the protection of the heaviest.</p>
+      <p>A log term, which makes the model work with the ratio of the two weights, had the best AIC of the three (12,286.9, against 12,297.8 for the straight line and 12,289.6 for the spline) while using the same single parameter as the straight line. It is also what crash physics predicts. We agreed the change, wrote the reason into the script, and still report the planned version: 0.853 per 100 kg.</p>
+
+      <figure class="figure figure--wide">
+        <h3 class="figure__title">The straight line drifts at both ends. The weight ratio follows the data</h3>
+        <p class="figure__sub">Odds of being killed or seriously injured by the weight of the driver's own car, relative to a 1,500 kg car. Log scale.</p>
+        <ul class="legend" aria-hidden="true">
+          <li><i class="is-line"></i>Weight ratio (log model)</li>
+          <li><i class="is-line is-two"></i>Straight line (planned model)</li>
+          <li><i class="is-dot"></i>Flexible spline</li>
+        </ul>
+        <div class="chart" id="chart-shape"></div>
+        <p class="figure__note">The shaded strip is the heaviest 1% of cars, above 2,443 kg, where data is thinnest.</p>
+        <details class="numbers">
+          <summary>Show the numbers</summary>
+          <div class="numbers__scroll">
+            <table class="data">
+              <thead><tr><th scope="col">Own car (kg)</th><th scope="col" class="num">Weight ratio</th><th scope="col" class="num">Straight line</th><th scope="col" class="num">Spline</th></tr></thead>
+              <tbody>
+                {% for s in c.shape %}<tr><th scope="row">{{ s.kg_fmt }}</th><td class="num">{{ s.log }}</td><td class="num">{{ s.linear }}</td><td class="num">{{ s.spline }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+
+      <p>The check that settled it for me: in crashes with more than 800 kg between the cars, the lighter car's driver was the one hurt 6.02 times as often as the heavier car's. The straight line predicted 6.84. The log model predicted 6.06.</p>
+
+      <h2 id="what-the-ratio-means">What the ratio means</h2>
+      <p>Because the model works on the ratio, the same 340 kg matters more between small cars. Between a 1,000 kg and a 1,340 kg car it roughly doubles the lighter driver's odds. Between 2,000 kg and 2,340 kg it adds about half. Try two cars:</p>
+
+      <div class="figure figure--wide">
+        <div class="try" id="try">
+          <div class="try__grid">
+            <div>
+              <div class="try__field">
+                <label for="try-own">Your car <output id="try-own-out" for="try-own">1,200 kg</output></label>
+                <input type="range" id="try-own" min="900" max="2400" step="10" value="1200">
+              </div>
+              <div class="try__field">
+                <label for="try-other">The other car <output id="try-other-out" for="try-other">1,800 kg</output></label>
+                <input type="range" id="try-other" min="900" max="2400" step="10" value="1800">
+              </div>
+              <p class="try__result" id="try-result" aria-live="polite">The other car is 50% heavier. Your odds of being killed or seriously injured are about 2.6 times the other driver's.</p>
+              <p class="try__ci" id="try-ci">95% confidence interval: 2.5 to 2.8 times.</p>
+            </div>
+            <div>
+              <div class="chart" id="chart-try"></div>
+            </div>
+          </div>
+          <p class="figure__note">The fitted association from the adjusted model, for cars between 900 and 2,400 kg. It describes crashes like the ones in this data and is not a prediction for any one crash.</p>
+        </div>
+      </div>
+
+      <h2 id="checks">Checks</h2>
+      <table>
+        <thead><tr><th scope="col">Check</th><th scope="col">Odds ratio per 10% heavier</th><th scope="col">What it says</th></tr></thead>
+        <tbody>
+          <tr><td>Main model</td><td>0.796 (0.784 to 0.808)</td><td>The headline</td></tr>
+          <tr><td>Complete cases only</td><td>0.793 (0.779 to 0.808)</td><td>Keeping unknowns as a category did not change the answer</td></tr>
+          <tr><td>Speed zone 60 km/h or less</td><td>0.802 (0.786 to 0.819)</td><td rowspan="2">No evidence the speed limit changes the effect (p = 0.28)</td></tr>
+          <tr><td>Speed zone above 60 km/h</td><td>0.790 (0.773 to 0.806)</td></tr>
+          <tr><td>Deaths only</td><td>0.573 (0.478 to 0.687)</td><td>Steeper, but only 279 crashes inform it, so the interval is wide</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="the-fleet-is-getting-heavier">The fleet is getting heavier</h2>
+      <figure class="figure">
+        <h3 class="figure__title">The typical car in these crashes gained 100 kg in twelve years</h3>
+        <p class="figure__sub">Median tare weight of passenger vehicles in two-car crashes, by crash year.</p>
+        <div class="chart" id="chart-years"></div>
+        <p class="figure__note">2024 covers January to September. Over the same period the median gap between the two cars grew from 300 kg to 330 kg.</p>
+        <details class="numbers">
+          <summary>Show the numbers</summary>
+          <div class="numbers__scroll">
+            <table class="data">
+              <thead><tr><th scope="col">Year</th><th scope="col" class="num">Median weight (kg)</th><th scope="col" class="num">Median gap (kg)</th></tr></thead>
+              <tbody>
+                {% for y in c.by_year %}<tr><th scope="row">{{ y.year }}</th><td class="num">{{ y.median_kg_fmt }}</td><td class="num">{{ y.median_gap }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+
+      <h2 id="what-this-does-not-show">What this does not show</h2>
+      <ul>
+        <li>It is an association, not proof of cause, although physics gives a reason: in a collision the lighter car's change in speed is larger.</li>
+        <li>Weight travels with design. Heavier vehicles are often four-wheel drives and utes, which sit higher and are built stiffer. Without make and model we cannot separate the two.</li>
+        <li>In a two-car crash, "my car is heavier" and "the other car is lighter" are the same comparison. This design cannot split protecting yourself from harming the other driver.</li>
+        <li>Serious injury comes from police reports, not a medical injury scale.</li>
+        <li>Drivers are only half the story. A 2026 University of Melbourne study found each extra 100 kg of vehicle weight went with 6% higher odds of death for a pedestrian who is hit.</li>
+      </ul>
+
+      <h2 id="how-it-was-built">How it was built</h2>
+      <p>Seven R scripts, numbered in run order. Each does one job and passes saved files to the next.</p>
+      <table>
+        <thead><tr><th scope="col">Script</th><th scope="col">Job</th><th scope="col">Who</th></tr></thead>
+        <tbody>
+          <tr><td>00</td><td>Evidence checks on the raw tables</td><td>Me</td></tr>
+          <tr><td>01</td><td>Build the matched driver pairs</td><td>Me</td></tr>
+          <tr><td>02</td><td>Compare excluded and retained crashes</td><td>Teammate</td></tr>
+          <tr><td>03</td><td>Descriptive tables and charts</td><td>Teammate</td></tr>
+          <tr><td>04</td><td>Conditional logistic regression models</td><td>Me</td></tr>
+          <tr><td>05</td><td>Speed zone and deaths-only models</td><td>Teammate</td></tr>
+          <tr><td>06</td><td>Model figures</td><td>Me</td></tr>
+        </tbody>
+      </table>
+      <p>The pipeline checks itself. Script 00 compares its printed output with a saved copy, 05 stops unless it reproduces the two reference models from 04, and 06 draws from saved tables without refitting anything, so a chart cannot drift from the printed numbers. The charts on this page are redrawn for the web from those same output tables.</p>
+      <p>The code is in a private repository because it is assessed coursework. I am happy to walk through it on request.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul>
+        <li>Department of Transport and Planning, Victoria Road Crash Data, Transport Victoria Open Data.</li>
+        <li>L. Evans and M. C. Frick, "Mass ratio and relative driver fatality risk in two-vehicle crashes," <em>Accident Analysis and Prevention</em>, vol. 25, no. 2, 1993.</li>
+        <li>R. Tolouei, M. Maher and H. Titheridge, "<a href="https://doi.org/10.1016/j.aap.2012.04.005">Vehicle mass and injury risk in two-car crashes: A novel methodology</a>," <em>Accident Analysis and Prevention</em>, vol. 50, 2013.</li>
+        <li>I. Taheri Sarteshnizi, N. Nassir, A. Rajabifard and M. Haghani, "<a href="https://doi.org/10.1016/j.scs.2026.107779">The association between passenger vehicle size and pedestrian fatality in Australia</a>," <em>Sustainable Cities and Society</em>, vol. 149, 2026.</li>
+      </ul>
+    </div>
+    <nav class="case__toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#why-compare-the-two-drivers-in-the-same-crash">Why compare the two drivers in the same crash</a></li>
+        <li><a href="#from-182-039-crashes-to-57-217">From 182,039 crashes to 57,217</a></li>
+        <li><a href="#the-raw-pattern">The raw pattern</a></li>
+        <li><a href="#the-model">The model</a></li>
+        <li><a href="#the-confounder-was-not-the-one-we-expected">The confounder was not the one we expected</a></li>
+        <li><a href="#testing-the-shape-instead-of-assuming-it">Testing the shape instead of assuming it</a></li>
+        <li><a href="#what-the-ratio-means">What the ratio means</a></li>
+        <li><a href="#checks">Checks</a></li>
+        <li><a href="#the-fleet-is-getting-heavier">The fleet is getting heavier</a></li>
+        <li><a href="#what-this-does-not-show">What this does not show</a></li>
+        <li><a href="#how-it-was-built">How it was built</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </nav>
+  </div>
+</article>
+<script type="application/json" id="crash-data">{{ site.data.crash | jsonify }}</script>

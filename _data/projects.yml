@@ -1,0 +1,180 @@
+# The four projects shown with a figure, in order
+featured:
+  - id: crash-weight
+    title: Vehicle weight and driver injury in two-car crashes
+    context: "Team of two, Swinburne (COS80023 Big Data), 2026. My part: building the data, the models and the figures."
+    figure: fig-curve.html
+    summary: >-
+      When two cars collide, how much does weight decide which driver is killed or seriously injured?
+      We compared the two drivers inside each of 57,217 Victorian crashes, so the road, the weather and
+      the speed limit cancel out. After adjusting for driver age and sex, vehicle age, seatbelt use and
+      point of impact, each 10% of extra weight went with about 20% lower odds for that car's driver.
+    more:
+      - >-
+        The plan said to model weight per 100 kg. I tested that straight line before trusting it, found it
+        understated the risk for light cars, and switched to the ratio of the two weights. The confounder
+        we expected was vehicle age. It turned out to be driver sex.
+    tools: R, survival (conditional logistic regression), dplyr, ggplot2
+    links:
+      - label: Read the case study
+        url: /projects/crash-weight/
+
+  - id: oshc
+    title: OSHC When It Matters
+    context: "Team project, Swinburne (COS70008), 2026. Industry partner: Medibank. My part: extraction, arithmetic and evaluation."
+    figure: fig-oshc.html
+    summary: >-
+      A learning prototype that helps international students make sense of their Overseas Student Health
+      Cover: short sourced lessons, practical steps for finding care, a bill explainer that works on
+      synthetic invoices, and a guarded chat. The chat was the hard part. Every answer goes through an
+      input review, a grounded draft and an output audit, and its citations are checked against the source PDF.
+    more:
+      - >-
+        My part was the bill explainer's extraction, the benefit and MBS arithmetic, the question classifier
+        and the evaluation code. The arithmetic had its tests written before the code, because it is money.
+        We also designed the evaluation so that nobody builds against the held-out set they are scored on.
+    tools: Python, Streamlit, Claude Haiku (Anthropic API), pytest
+    links:
+      - label: View the repository
+        url: https://github.com/Bikram2051/oshc-when-it-matters
+
+  - id: survey-platform
+    title: Survey platform
+    context: "Backend MVP for survey and field data collection, built for the Nepal market."
+    figure: fig-survey.html
+    summary: >-
+      The backend for a multi-tenant survey platform: versioned questionnaires in English and Nepali,
+      offline sync for field teams, and a public link for self-response. Each client's data is kept apart
+      by Postgres row-level security, so isolation is enforced by the database and proven by tests.
+    more:
+      - >-
+        The statistics layer rakes responses to census margins, then reports Kish effective sample sizes,
+        standard errors and design effects, so no estimate leaves the API as a bare percentage.
+        Self-selected responses stay out of estimates unless someone forces them in, and then they carry a warning.
+    tools: Python, Django REST Framework, PostgreSQL, Docker, pytest
+    links:
+      - label: View the repository
+        url: https://github.com/Bikram2051/survey-platform
+
+  - id: sentiment
+    title: Domain adaptive sentiment analysis
+    context: "Team project, Swinburne, completed. My role: data engineer."
+    figure: fig-sentiment.html
+    summary: >-
+      A sentiment model that had to work across two very different kinds of writing: casual Reddit
+      comments and formal financial reporting. I owned the data side: pulling in GoEmotions and the
+      Financial PhraseBank, writing the cleaning and standardisation steps so both corpora came out in a
+      consistent shape, and producing the train, validation and test splits the modelling work ran on.
+    more:
+      - >-
+        The team used those splits for the BERT and FinBERT models and a Streamlit dashboard that displayed the metrics.
+    tools: Python, pandas, Hugging Face, BERT and FinBERT
+    links:
+      - label: View the repository
+        url: https://github.com/TDP-2026-Repository/TECHNOLOGY-DESIGN-PROJECT
+
+# Everything else
+more:
+  - id: bank-loan
+    title: Bank loan portfolio dashboard
+    context: Personal project.
+    image: /assets/projects/bank-loan.webp
+    image_alt: Bank loan summary dashboard in Tableau, with applications, funded amount and good and bad loan splits
+    short: Headline lending KPIs written in SQL Server, shown in three linked Tableau dashboards and checked back against the SQL.
+    body: >-
+      I loaded a bank loan dataset into MS SQL Server and wrote the queries behind the headline numbers:
+      total applications, funded amount, average interest rate and the month on month movement, using
+      DATEPART, CTEs and window functions. Loans were split into performing and non performing, and the
+      results went into three linked Tableau dashboards covering the summary, the monthly and regional
+      view, and a detail table. Every figure on the dashboards was checked back against the SQL.
+    tools: MS SQL Server, Tableau
+    links:
+      - label: Open the dashboard
+        url: https://public.tableau.com/app/profile/bikram.bhattarai/viz/BANKLOANDASHBOARD_17339885232100/Summary
+
+  - id: alvik
+    title: AlVik
+    context: Personal project.
+    short: A single-file AI chat client behind its own Cloudflare Worker, built to keep every secret out of the browser.
+    body: >-
+      A fast AI chat client that lives in a single HTML file, with its own Cloudflare Worker in front of
+      the model providers. The aim was to keep every secret out of the browser. The Worker holds the API
+      keys and the password, signs expiring sessions and only answers calls from allowed origins. Chats
+      sync between devices through Cloudflare KV, and deletions are stored as tombstones, so a device that
+      was offline cannot bring a deleted chat back. A CI check fails the build if a password or key ever
+      reappears in the client.
+    tools: JavaScript, Cloudflare Workers and KV, GitHub Actions
+    links:
+      - label: View the repository
+        url: https://github.com/Bikram2051/AlVik
+
+  - id: ev-population
+    title: Electric vehicle population analysis
+    context: Personal project.
+    image: /assets/projects/ev-population.webp
+    image_alt: Electric vehicle dashboard in Tableau, with registrations by model year, state, make and eligibility
+    short: Washington State EV registrations, cleaned in Python and explained in Tableau for a non technical audience.
+    body: >-
+      An analysis of electric vehicle registrations in Washington State, covering both battery and plug in
+      hybrid vehicles. I cleaned and explored the data in Python to find the leading manufacturers, where
+      registrations cluster geographically and how battery vehicle adoption has moved year on year, then
+      built a Tableau dashboard aimed at a non technical audience with county distribution, driving range
+      by brand and eligibility breakdowns.
+    tools: Python, pandas, matplotlib, seaborn, Tableau
+    links:
+      - label: Open the dashboard
+        url: https://public.tableau.com/app/profile/bikram.bhattarai/viz/ElectricVehicleDataAnalysis_17315002218810/Dashboard1
+
+  - id: bankruptcy
+    title: Company bankruptcy prediction
+    context: Personal project, using the UCI Polish companies dataset.
+    short: 64 financial ratios and very few failures. SMOTE and cost sensitive learning, judged on recall and ROC AUC.
+    body: >-
+      A classification problem with a heavy imbalance: five yearly snapshots, 64 financial ratios, and
+      very few insolvent companies to learn from. I handled the imbalance with SMOTE and cost sensitive
+      learning, then compared logistic regression, random forest and gradient boosting. Recall and ROC AUC
+      mattered more than plain accuracy here, since missing a company that goes under is far more expensive
+      than a false alarm. The feature importances lined up with the liquidity and leverage ratios you would expect.
+    tools: Python, scikit-learn, imbalanced-learn
+
+  - id: beach-water
+    title: Australian beach and water locations
+    context: University project (COS60008), completed.
+    short: Open data on beach amenities and regional climate, combined, cleaned and written up as a rerunnable notebook.
+    body: >-
+      An analysis of beach and water locations around Australia using open data. I combined several
+      datasets covering beach amenities and regional climate, worked through the missing values and
+      inconsistent labels, and compared New South Wales against the rest of the country. The whole thing
+      is written up as a Jupyter notebook with a data dictionary so the steps can be followed and rerun.
+    tools: Python, pandas, Jupyter, open data
+    links:
+      - label: View the repository
+        url: https://github.com/Bikram2051/Bikram2051-COS60008-Assignment
+
+  - id: practice-dashboards
+    title: Tableau practice dashboards
+    context: Personal projects, built for practice.
+    short: An HR dashboard and a sales dashboard, built to get the basics right.
+    body: >-
+      Two dashboards built to get the basics right. The HR dashboard covers headcount, attrition,
+      demographics and departments, organised around the questions that get asked first: who is leaving,
+      from where, and whether there is a pattern in it. The sales dashboard tracks sales, profit and
+      quantity year on year by category and region, with headline numbers on top, supporting charts
+      underneath and filters that behave the way people expect.
+    tools: Tableau
+    links:
+      - label: Open the HR dashboard
+        url: https://public.tableau.com/app/profile/bikram.bhattarai/viz/INTERACTIVEHRANALYTICSDASHBOARD/HRANALYTICSDASHBOARD
+      - label: Open the sales dashboard
+        url: https://public.tableau.com/app/profile/bikram.bhattarai/viz/SalesDashboardOverview_17309887480550/SalesDashboard
+
+  - id: echosphere
+    title: EchoSphere
+    context: University project.
+    short: A full-stack PHP and MySQL store with server-side validation and an order dashboard.
+    body: >-
+      A full-stack PHP and MySQL store with server-side validation and an order dashboard.
+    tools: PHP, MySQL
+    links:
+      - label: View the repository
+        url: https://github.com/Bikram2051/university-web-app-php-java

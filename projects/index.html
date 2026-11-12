@@ -1,0 +1,56 @@
+---
+layout: default
+title: Work
+description: "Data analysis, statistics and machine learning projects by Bikram Bhattarai: a matched-pair study of vehicle weight and crash injury, an OSHC learning prototype with Medibank, a survey platform with weighted estimates, sentiment analysis and Tableau dashboards."
+permalink: /projects/
+redirect_from:
+  - /projects.html
+---
+<header class="wrap page-head">
+  <h1 class="page-head__title">Work</h1>
+  <p class="page-head__lede">From a road safety study and a team prototype built with an industry partner to dashboards built for practice, with the strongest work first. Where there is something to look at, the link goes straight to the case study, the repository or the live dashboard.</p>
+</header>
+
+<section class="section" style="padding-top: 1.5rem">
+  <div class="wrap work">
+    {% for p in site.data.projects.featured %}
+    <article class="work__item" id="{{ p.id }}">
+      <div class="work__body">
+        <h2 class="work__title">{{ p.title }}</h2>
+        <p class="work__context">{{ p.context }}</p>
+        <p>{{ p.summary }}</p>
+        {% for para in p.more %}<p>{{ para }}</p>{% endfor %}
+        <p class="work__tools"><b>Tools</b> {{ p.tools }}</p>
+        <ul class="work__links">
+          {% for l in p.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      <div class="work__figure">{% include {{ p.figure }} %}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section--wash" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="section__head"><h2 class="section__title" id="more-title">More work</h2></div>
+    {% for p in site.data.projects.more %}
+    <article class="entry" id="{{ p.id }}">
+      <div>
+        <h3 class="work__title">{{ p.title }}</h3>
+        <p class="work__context">{{ p.context }}</p>
+      </div>
+      <div class="work__body">
+        <p>{{ p.body }}</p>
+        {% if p.image %}<p><img class="work__shot" src="{{ p.image }}" alt="{{ p.image_alt }}" width="1200" height="675" loading="lazy"></p>{% endif %}
+        <p class="work__tools"><b>Tools</b> {{ p.tools }}</p>
+        {% if p.links %}
+        <ul class="work__links">
+          {% for l in p.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

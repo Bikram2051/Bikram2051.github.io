@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 220 | at_least: 1 %}
+<article>
+  <header class="wrap page-head">
+    <p class="crumb"><a href="/articles/">Articles</a></p>
+    <h1 class="page-head__title page-head__title--long">{{ page.title }}</h1>
+    {% if page.description %}<p class="page-head__lede">{{ page.description }}</p>{% endif %}
+    <p class="page-head__meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time>, {{ minutes }} minute read</p>
+  </header>
+  <div class="wrap section" style="padding-top: 1rem">
+    <div class="prose">
+      {{ content }}
+    </div>
+    {% include share.html %}
+    <nav class="pager" aria-label="More articles">
+      {% if page.previous %}<a href="{{ page.previous.url }}"><span>Earlier</span>{{ page.previous.title }}</a>{% endif %}
+      {% if page.next %}<a href="{{ page.next.url }}"><span>Later</span>{{ page.next.title }}</a>{% endif %}
+    </nav>
+  </div>
+</article>

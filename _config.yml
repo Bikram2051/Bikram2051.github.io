@@ -1,0 +1,70 @@
+title: Bikram Bhattarai
+tagline: Data analyst in Melbourne
+description: >-
+  Bikram Bhattarai is a data analyst in Melbourne with close to four years in
+  product and market insights, now finishing a Master of Data Science at
+  Swinburne. SQL, Python, R, Tableau and Power BI.
+url: https://bikram2051.github.io
+baseurl: ""
+lang: en-AU
+timezone: Australia/Melbourne
+
+author:
+  name: Bikram Bhattarai
+  url: https://bikram2051.github.io/about/
+
+# Contact details used by the footer and the About page
+contact:
+  email: vikrambhattarai1994@gmail.com
+  phone: 0433 635 080
+  phone_link: "+61433635080"
+  linkedin: https://www.linkedin.com/in/bikram2051/
+  github: https://github.com/Bikram2051
+  tableau: https://public.tableau.com/app/profile/bikram.bhattarai/vizzes
+
+repository: Bikram2051/Bikram2051.github.io
+
+# Articles
+permalink: /articles/:year/:title/
+future: true
+excerpt_separator: <!--more-->
+
+# Link previews (LinkedIn, X, Facebook) and search engines
+social:
+  name: Bikram Bhattarai
+  links:
+    - https://www.linkedin.com/in/bikram2051/
+    - https://github.com/Bikram2051
+    - https://public.tableau.com/app/profile/bikram.bhattarai/vizzes
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+feed:
+  path: /feed.xml
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/og-image.png
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

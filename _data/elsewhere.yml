@@ -1,0 +1,10 @@
+# Posts you made on LinkedIn, X or Facebook that should also show on the Articles page.
+# Copy the example below, remove the "# " at the start of each line, and fill it in.
+# Newest first. Each entry needs a date, where it was posted, a title and the link.
+#
+# - date: 2026-11-20
+#   where: LinkedIn
+#   title: Why I test a model's shape before I trust it
+#   url: https://www.linkedin.com/posts/your-post-link
+#   note: One sentence on what the post says. Optional.
+[]

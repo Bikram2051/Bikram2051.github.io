@@ -1,0 +1,34 @@
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact__grid">
+    <div>
+      <h2 class="contact__title" id="contact-title">Get in touch</h2>
+      <p class="contact__lede">Email is quickest. I usually reply the same day.</p>
+      <a class="contact__mail" href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+      <ul class="contact__links">
+        <li><a href="{{ site.contact.linkedin }}">LinkedIn</a></li>
+        <li><a href="{{ site.contact.github }}">GitHub</a></li>
+        <li><a href="{{ site.contact.tableau }}">Tableau Public</a></li>
+        <li><a href="/assets/Bikram-Bhattarai-Resume.pdf">Resume (PDF)</a></li>
+        <li><a href="/assets/Bikram-Bhattarai-Resume.docx">Resume (Word)</a></li>
+      </ul>
+    </div>
+    <dl class="contact__facts">
+      <div><dt>Location</dt><dd>Melbourne, Victoria. Open to onsite, hybrid and remote.</dd></div>
+      <div><dt>Working rights</dt><dd>Australian permanent resident. Full working rights, no sponsorship required.</dd></div>
+      <div><dt>Availability</dt><dd>Immediate for part time and graduate roles.</dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:{{ site.contact.phone_link }}">{{ site.contact.phone }}</a></dd></div>
+      <div><dt>Referees</dt><dd>Available on request.</dd></div>
+    </dl>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <p>&copy; {{ site.time | date: '%Y' }} Bikram Bhattarai, Melbourne</p>
+    <ul>
+      <li><a href="/projects/">Work</a></li>
+      <li><a href="/articles/">Articles</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+  </div>
+</footer>
