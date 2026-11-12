@@ -1,6 +1,6 @@
-# bikram2051.github.io
+# bikrambhattarai.com
 
-Source for my portfolio: <https://bikram2051.github.io>
+Source for my portfolio: <https://bikrambhattarai.com>
 
 It is a Jekyll site, built by GitHub Pages on every push to `main`. No build step to run and nothing to deploy by hand.
 
