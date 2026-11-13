@@ -2,6 +2,7 @@
 title: The 98.9% score that was a bug
 description: One of our sentiment models scored 98.9% when every other model sat near 85%. Notes from the data side of a team project, where the best result we had was the one we threw away.
 tags: [Data engineering, NLP, evaluation]
+image: /assets/og/leak-post.png
 ---
 
 In first semester this year I was the data engineer on a six person sentiment analysis project at Swinburne. The question was how well a model trained on everyday writing carries over to financial writing, and what kind of extra training helps.

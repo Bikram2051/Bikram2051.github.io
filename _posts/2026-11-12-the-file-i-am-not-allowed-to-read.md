@@ -2,6 +2,7 @@
 title: The file in my own project I am not allowed to read
 description: On a team prototype about health cover for international students, the most useful rules were about what each of us must not see and what the software must refuse to say.
 tags: [Evaluation, testing, Python]
+image: /assets/og/oshc-post.png
 ---
 
 Overseas Student Health Cover is the insurance most international students in Australia have to hold. It is also easy to misunderstand until the first bill arrives. This year three of us at Swinburne built a learning prototype for it, with Medibank as the industry partner.

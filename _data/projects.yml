@@ -1,25 +1,27 @@
-# The four projects shown with a figure, in order
+# The projects shown with a figure, in order
 featured:
-  - id: crash-weight
-    title: Vehicle weight and driver injury in two-car crashes
-    context: "Team of two, Swinburne (COS80023 Big Data), 2026. My part: building the data, the models and the figures."
-    figure: fig-curve.html
+  - id: sentiment
+    title: Domain adaptive sentiment analysis
+    context: "Six person team project, Swinburne, 2026. My role: data engineer."
+    figure: fig-sentiment.html
     summary: >-
-      When two cars collide, how much does weight decide which driver is killed or seriously injured?
-      We compared the two drivers inside each of 57,217 Victorian crashes, so the road, the weather and
-      the speed limit cancel out. After adjusting for driver age and sex, vehicle age, seatbelt use and
-      point of impact, each 10% of extra weight went with about 20% lower odds for that car's driver.
+      A sentiment model that had to work across two very different kinds of writing: casual Reddit
+      comments and formal financial reporting. I owned the data side: pulling in GoEmotions and the
+      Financial PhraseBank, writing the cleaning and standardisation steps so both corpora came out in a
+      consistent shape, and producing the train, validation and test splits the modelling work ran on.
     more:
       - >-
-        The plan said to model weight per 100 kg. I tested that straight line before trusting it, found it
-        understated the risk for light cars, and switched to the ratio of the two weights. The confounder
-        we expected was vehicle age. It turned out to be driver sex.
-    tools: R, survival (conditional logistic regression), dplyr, ggplot2
+        The team used those splits to fine-tune BERT (bert-base-uncased) in three ways, and built a Streamlit dashboard that displayed the metrics.
+      - >-
+        When one model scored 98.9% against a field near 85%, the cause was in the data: test sentences had
+        leaked into the combined training file. Rebuilt from training rows only, it scored 84.7%, in line with
+        everything else.
+    tools: Python, pandas, Hugging Face, BERT
     links:
-      - label: Read the case study
-        url: /projects/crash-weight/
       - label: Read the article
-        url: /articles/2026/what-57217-crashes-say-about-car-weight/
+        url: /articles/2026/the-98-9-percent-score-that-was-a-bug/
+      - label: View the repository
+        url: https://github.com/TDP-2026-Repository/TECHNOLOGY-DESIGN-PROJECT
 
   - id: oshc
     title: OSHC When It Matters
@@ -42,24 +44,28 @@ featured:
       - label: View the repository
         url: https://github.com/Bikram2051/oshc-when-it-matters
 
-  - id: sentiment
-    title: Domain adaptive sentiment analysis
-    context: "Team project, Swinburne, completed. My role: data engineer."
-    figure: fig-sentiment.html
+
+  - id: crash-weight
+    title: Vehicle weight and driver injury in two-car crashes
+    context: "Team of two, Swinburne (COS80023 Big Data), 2026. My part: building the data, the models and the figures."
+    figure: fig-curve.html
     summary: >-
-      A sentiment model that had to work across two very different kinds of writing: casual Reddit
-      comments and formal financial reporting. I owned the data side: pulling in GoEmotions and the
-      Financial PhraseBank, writing the cleaning and standardisation steps so both corpora came out in a
-      consistent shape, and producing the train, validation and test splits the modelling work ran on.
+      When two cars collide, how much does weight decide which driver is killed or seriously injured?
+      We compared the two drivers inside each of 57,217 Victorian crashes, so the road, the weather and
+      the speed limit cancel out. After adjusting for driver age and sex, vehicle age, seatbelt use and
+      point of impact, each 10% of extra weight went with about 20% lower odds for that car's driver.
     more:
       - >-
-        The team used those splits to fine-tune BERT (bert-base-uncased) in three ways, and built a Streamlit dashboard that displayed the metrics.
-    tools: Python, pandas, Hugging Face, BERT
+        The plan said to model weight per 100 kg. I tested that straight line before trusting it, found it
+        understated the risk for light cars, and switched to the ratio of the two weights. The confounder
+        we expected was vehicle age. It turned out to be driver sex.
+    tools: R, survival (conditional logistic regression), dplyr, ggplot2
     links:
+      - label: Read the case study
+        url: /projects/crash-weight/
       - label: Read the article
-        url: /articles/2026/the-98-9-percent-score-that-was-a-bug/
-      - label: View the repository
-        url: https://github.com/TDP-2026-Repository/TECHNOLOGY-DESIGN-PROJECT
+        url: /articles/2026/what-57217-crashes-say-about-car-weight/
+
 
 # Everything else
 more:
