@@ -1,0 +1,12 @@
+{%- comment -%}
+  A YouTube video inside an article. Use it like this:
+  {% include youtube.html id="PnMeck8WoIA" title="What the video is called" %}
+  The player loads from youtube-nocookie.com only when it scrolls near the screen.
+  The link underneath keeps the video reachable in feed readers that drop iframes.
+{%- endcomment -%}
+<figure class="video figure--wide">
+  <div class="video__frame">
+    <iframe src="https://www.youtube-nocookie.com/embed/{{ include.id }}?rel=0" title="{{ include.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <figcaption class="video__cap"><a href="https://www.youtube.com/watch?v={{ include.id }}" rel="noopener">{{ include.title }}</a> on YouTube{% if include.length %}, {{ include.length }}{% endif %}</figcaption>
+</figure>

@@ -38,6 +38,14 @@ Commit it and it is live in about a minute. The date and the web address come fr
 
 The page at `/write/` has one-click shortcuts for all of this.
 
+To put a YouTube video in an article, add this line where it should appear:
+
+```liquid
+{% include youtube.html id="PnMeck8WoIA" title="The video's title" %}
+```
+
+The player comes from youtube-nocookie.com, loads only when it scrolls near the screen, and has a plain link underneath for feed readers that drop video.
+
 ## List a post made somewhere else
 
 Add an entry to `_data/elsewhere.yml` with the date, where it was posted, a title and the link. It appears on the Articles page under "Posted elsewhere".
